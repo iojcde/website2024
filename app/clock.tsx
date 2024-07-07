@@ -2,56 +2,65 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
 
 const UltraSmoothRoundedLongClock: React.FC = () => {
-  const [secondsRotation, setSecondsRotation] = useState(0);
-  const [minutesRotation, setMinutesRotation] = useState(0);
-  const [hoursRotation, setHoursRotation] = useState(0);
+  const [secondsRotation, setSecondsRotation] = useState(192); // 32 seconds
+  const [minutesRotation, setMinutesRotation] = useState(63); // 10 minutes
+  const [hoursRotation, setHoursRotation] = useState(305); // 10 hours
   const animationRef = useRef<number | null>(null);
   const startTimeRef = useRef<number | null>(null);
-  const targetRotationsRef = useRef<{
-    seconds: number;
-    minutes: number;
-    hours: number;
-  } | null>(null);
+  const endTimeRef = useRef<Date | null>(null);
 
-  const calculateTargetRotations = () => {
+  const getEndTime = () => {
     const now = new Date();
-    // Add 3 seconds to the current time
-    now.setSeconds(now.getSeconds() + 2.7);
-    const seconds = now.getSeconds();
-    const minutes = now.getMinutes();
-    const hours = now.getHours();
-    const milliseconds = now.getMilliseconds();
-
-    return {
-      seconds: ((seconds + milliseconds / 1000) / 60) * 360,
-      minutes:
-        (minutes / 60) * 360 + ((seconds + milliseconds / 1000) / 60) * 6,
-      hours: ((hours % 12) / 12) * 360 + (minutes / 60) * 30,
-    };
+    now.setMilliseconds(now.getMilliseconds() + 2000); // Set end time to 3 seconds in the future
+    return now;
   };
 
   const animate = (timestamp: number) => {
     if (startTimeRef.current === null) {
       startTimeRef.current = timestamp;
-      targetRotationsRef.current = calculateTargetRotations();
+      endTimeRef.current = getEndTime();
     }
     const elapsed = timestamp - startTimeRef.current;
 
     if (elapsed < 2000) {
       // 3 second initial animation
       const progress = elapsed / 2000; // 0 to 1
-      const easeProgress = easeInPower4InOut(progress);
+      const easeProgress = easeInOutPower4(progress);
 
-      if (targetRotationsRef.current) {
+      if (endTimeRef.current) {
+        const endSeconds = endTimeRef.current.getSeconds();
+        const endMinutes = endTimeRef.current.getMinutes();
+        const endHours = endTimeRef.current.getHours();
+        const endMilliseconds = endTimeRef.current.getMilliseconds();
+
+        let targetSecondsRotation =
+          ((endSeconds + endMilliseconds / 1000) / 60) * 360;
+        let targetMinutesRotation =
+          (endMinutes / 60) * 360 +
+          ((endSeconds + endMilliseconds / 1000) / 60) * 6;
+        let targetHoursRotation =
+          ((endHours % 12) / 12) * 360 +
+          (endMinutes / 60) * 30 +
+          ((endSeconds + endMilliseconds / 1000) / 3600) * 30;
+
+        // Ensure the hands always move forward
+        if (targetSecondsRotation < secondsRotation)
+          targetSecondsRotation += 360;
+        if (targetMinutesRotation < minutesRotation)
+          targetMinutesRotation += 360;
+        if (targetHoursRotation < hoursRotation) targetHoursRotation += 360;
+
         setSecondsRotation(
-          easeProgress * (targetRotationsRef.current.seconds + 720) +
-            (1 - easeProgress) * 720
+          secondsRotation +
+            easeProgress * (targetSecondsRotation - secondsRotation)
         );
         setMinutesRotation(
-          easeProgress * (targetRotationsRef.current.minutes + 360) +
-            (1 - easeProgress) * 360
+          minutesRotation +
+            easeProgress * (targetMinutesRotation - minutesRotation)
         );
-        setHoursRotation(easeProgress * targetRotationsRef.current.hours);
+        setHoursRotation(
+          hoursRotation + easeProgress * (targetHoursRotation - hoursRotation)
+        );
       }
 
       animationRef.current = requestAnimationFrame(animate);
@@ -61,7 +70,7 @@ const UltraSmoothRoundedLongClock: React.FC = () => {
     }
   };
 
-  const easeInPower4InOut = (t: number) =>
+  const easeInOutPower4 = (t: number) =>
     t < 0.5 ? 8 * t * t * t * t : 1 - Math.pow(-2 * t + 2, 4) / 2;
 
   const updateTime = () => {
@@ -71,9 +80,28 @@ const UltraSmoothRoundedLongClock: React.FC = () => {
     const hours = now.getHours();
     const milliseconds = now.getMilliseconds();
 
-    setSecondsRotation(((seconds + milliseconds / 1000) / 60) * 360);
-    setMinutesRotation((minutes / 60) * 360 + (seconds / 60) * 6);
-    setHoursRotation(((hours % 12) / 12) * 360 + (minutes / 60) * 30);
+    let newSecondsRotation = ((seconds + milliseconds / 1000) / 60) * 360;
+    let newMinutesRotation =
+      (minutes / 60) * 360 + ((seconds + milliseconds / 1000) / 60) * 6;
+    let newHoursRotation =
+      ((hours % 12) / 12) * 360 +
+      (minutes / 60) * 30 +
+      ((seconds + milliseconds / 1000) / 3600) * 30;
+
+    // Ensure the hands always move forward
+    if (newSecondsRotation < secondsRotation) newSecondsRotation += 360;
+    if (newMinutesRotation < minutesRotation) newMinutesRotation += 360;
+    if (newHoursRotation < hoursRotation) newHoursRotation += 360;
+
+    // Ensure the seconds hand rotates at least 90 degrees
+    const secondsDifference = newSecondsRotation - secondsRotation;
+    if (secondsDifference < 90) {
+      newSecondsRotation += 360;
+    }
+
+    setSecondsRotation(newSecondsRotation);
+    setMinutesRotation(newMinutesRotation);
+    setHoursRotation(newHoursRotation);
 
     animationRef.current = requestAnimationFrame(updateTime);
   };
@@ -93,7 +121,7 @@ const UltraSmoothRoundedLongClock: React.FC = () => {
     top: "50%",
     left: "50%",
     transformOrigin: "top",
-    transform: `translateX(-50%) rotate(${rotation - 180}deg)`,
+    transform: `translateX(-50%) rotate(${(rotation % 360) - 180}deg)`,
   });
 
   return (
