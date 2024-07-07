@@ -1,0 +1,23 @@
+
+@import "@radix-ui/colors/gray.css"; 
+@import "@radix-ui/colors/gray-dark.css"; 
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities; 
+
+
+ 
+
+body {
+  @apply bg-gray-1 text-gray-11;
+
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+}
+ 
