@@ -1,13 +1,17 @@
 "use client";
 import React, { useState, useEffect, useRef, useCallback } from "react";
 
-const UltraSmoothRoundedLongClock = () => {
+const UltraSmoothRoundedLongClock: React.FC = () => {
   const [secondsRotation, setSecondsRotation] = useState(0);
   const [minutesRotation, setMinutesRotation] = useState(0);
   const [hoursRotation, setHoursRotation] = useState(0);
-  const animationRef = useRef(null);
-  const startTimeRef = useRef(null);
-  const targetRotationsRef = useRef(null);
+  const animationRef = useRef<number | null>(null);
+  const startTimeRef = useRef<number | null>(null);
+  const targetRotationsRef = useRef<{
+    seconds: number;
+    minutes: number;
+    hours: number;
+  } | null>(null);
 
   const calculateTargetRotations = () => {
     const now = new Date();
@@ -26,8 +30,8 @@ const UltraSmoothRoundedLongClock = () => {
     };
   };
 
-  const animate = (timestamp) => {
-    if (!startTimeRef.current) {
+  const animate = (timestamp: number) => {
+    if (startTimeRef.current === null) {
       startTimeRef.current = timestamp;
       targetRotationsRef.current = calculateTargetRotations();
     }
@@ -38,15 +42,17 @@ const UltraSmoothRoundedLongClock = () => {
       const progress = elapsed / 2000; // 0 to 1
       const easeProgress = easeInPower4InOut(progress);
 
-      setSecondsRotation(
-        easeProgress * (targetRotationsRef.current.seconds + 720) +
-          (1 - easeProgress) * 720
-      );
-      setMinutesRotation(
-        easeProgress * (targetRotationsRef.current.minutes + 360) +
-          (1 - easeProgress) * 360
-      );
-      setHoursRotation(easeProgress * targetRotationsRef.current.hours);
+      if (targetRotationsRef.current) {
+        setSecondsRotation(
+          easeProgress * (targetRotationsRef.current.seconds + 720) +
+            (1 - easeProgress) * 720
+        );
+        setMinutesRotation(
+          easeProgress * (targetRotationsRef.current.minutes + 360) +
+            (1 - easeProgress) * 360
+        );
+        setHoursRotation(easeProgress * targetRotationsRef.current.hours);
+      }
 
       animationRef.current = requestAnimationFrame(animate);
     } else {
@@ -55,7 +61,7 @@ const UltraSmoothRoundedLongClock = () => {
     }
   };
 
-  const easeInPower4InOut = (t) =>
+  const easeInPower4InOut = (t: number) =>
     t < 0.5 ? 8 * t * t * t * t : 1 - Math.pow(-2 * t + 2, 4) / 2;
 
   const updateTime = () => {
@@ -82,7 +88,7 @@ const UltraSmoothRoundedLongClock = () => {
     };
   }, []);
 
-  const getHandStyle = (rotation) => ({
+  const getHandStyle: (r: number) => React.CSSProperties = (rotation) => ({
     position: "absolute",
     top: "50%",
     left: "50%",
@@ -134,13 +140,13 @@ const UltraSmoothRoundedLongClock = () => {
 
 export default UltraSmoothRoundedLongClock;
 
-const CurrentTime = () => {
+const CurrentTime: React.FC = () => {
   const [time, setTime] = useState(new Date());
-  const requestRef = useRef();
-  const previousTimeRef = useRef();
+  const requestRef = useRef<number | null>(null);
+  const previousTimeRef = useRef<number | null>(null);
 
   const animate = useCallback(
-    (timestamp) => {
+    (timestamp: number) => {
       if (previousTimeRef.current !== undefined) {
         const now = new Date();
         if (now.getSeconds() !== time.getSeconds()) {
@@ -155,7 +161,11 @@ const CurrentTime = () => {
 
   useEffect(() => {
     requestRef.current = requestAnimationFrame(animate);
-    return () => cancelAnimationFrame(requestRef.current);
+    return () => {
+      if (requestRef.current) {
+        cancelAnimationFrame(requestRef.current);
+      }
+    };
   }, [animate]);
 
   return (
