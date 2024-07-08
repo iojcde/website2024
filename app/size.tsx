@@ -1,4 +1,5 @@
 "use client";
+import { cn } from "@/lib/utils";
 import React, { useState, useEffect } from "react";
 
 const ScreenSize = () => {
@@ -28,7 +29,12 @@ const ScreenSize = () => {
   }, []);
 
   return (
-    <div className="p-8  absolute bottom-0 left-0 text-gray-10 font-mono text-xs">
+    <div
+      className={cn(
+        `p-8  absolute transition bottom-0 left-0 text-gray-10 font-mono text-xs`,
+        !size.width && "opacity-0"
+      )}
+    >
       {size.width}x{size.height}
     </div>
   );

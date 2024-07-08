@@ -1,10 +1,15 @@
 "use client";
 import React, { useState, useEffect, useRef, useCallback } from "react";
+import { Spotlight } from "./components/spotlight";
+import { cn } from "@/lib/utils";
 
 const UltraSmoothRoundedLongClock: React.FC = () => {
   const [secondsRotation, setSecondsRotation] = useState(192); // 32 seconds
   const [minutesRotation, setMinutesRotation] = useState(63); // 10 minutes
   const [hoursRotation, setHoursRotation] = useState(305); // 10 hours
+
+  const [clockFaceEnabled, setClockFaceEnabled] = useState(false);
+
   const animationRef = useRef<number | null>(null);
   const startTimeRef = useRef<number | null>(null);
   const endTimeRef = useRef<Date | null>(null);
@@ -50,6 +55,22 @@ const UltraSmoothRoundedLongClock: React.FC = () => {
           targetMinutesRotation += 360;
         if (targetHoursRotation < hoursRotation) targetHoursRotation += 360;
 
+        // Ensure the seconds hand rotates at least 90 degrees
+        const secondsDifference = Math.abs(
+          targetSecondsRotation - secondsRotation
+        );
+        const minutesDifference = Math.abs(
+          targetMinutesRotation - minutesRotation
+        );
+
+        if (secondsDifference < 90 || secondsDifference > 270) {
+          targetSecondsRotation += 360;
+        }
+
+        if (minutesDifference < 90 || minutesDifference > 270) {
+          targetMinutesRotation += 360;
+        }
+
         setSecondsRotation(
           secondsRotation +
             easeProgress * (targetSecondsRotation - secondsRotation)
@@ -88,17 +109,6 @@ const UltraSmoothRoundedLongClock: React.FC = () => {
       (minutes / 60) * 30 +
       ((seconds + milliseconds / 1000) / 3600) * 30;
 
-    // Ensure the hands always move forward
-    if (newSecondsRotation < secondsRotation) newSecondsRotation += 360;
-    if (newMinutesRotation < minutesRotation) newMinutesRotation += 360;
-    if (newHoursRotation < hoursRotation) newHoursRotation += 360;
-
-    // Ensure the seconds hand rotates at least 90 degrees
-    const secondsDifference = newSecondsRotation - secondsRotation;
-    if (secondsDifference < 90) {
-      newSecondsRotation += 360;
-    }
-
     setSecondsRotation(newSecondsRotation);
     setMinutesRotation(newMinutesRotation);
     setHoursRotation(newHoursRotation);
@@ -126,41 +136,91 @@ const UltraSmoothRoundedLongClock: React.FC = () => {
 
   return (
     <div
-      className="absolute inset-0 -z-10"
+      className={cn(
+        `absolute inset-0 z-0 transition`,
+        clockFaceEnabled && "scale-50 lg:scale-75  darfk"
+      )}
       style={{
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        overflow: "hidden",
       }}
     >
-      <button className="bg-gray-1 border-[#FF4D00] shadow-xl border-[6px] mx-auto my-auto w-4 h-4 rounded-full z-10 flex items-center justify-center"></button>
+      {clockFaceEnabled && (
+        <div className="clockface overflow-hidden absolute  mx-auto my-auto aspect-square flex items-center bg-gray-2 justify-center drop-shadow-2xl shadow-inner shadow-gray-4 rounded-full p-24  ">
+          <div className=" h-[30.5rem] relative lg:h-[42.5rem] rounded-full border-2 border-gray-2 shadow-gray-1  clockface-inner  aspect-square">
+            <div className="absolute  inset-x-0 top-12 sm:top-24 text-xl  text-center font-medium font-mono">
+              jcde.xyz
+            </div>
+          </div>
 
+          <div className="ticks absolute inset-7">
+            <div className="hour">
+              <div className="min"></div>
+              <div className="min"></div>
+              <div className="min"></div>
+              <div className="min"></div>
+              <div className="min"></div>
+            </div>
+            <div className="hour">
+              <div className="min"></div>
+              <div className="min"></div>
+              <div className="min"></div>
+              <div className="min"></div>
+              <div className="min"></div>
+            </div>
+            <ol>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+            </ol>
+          </div>
+        </div>
+      )}
+      <button
+        onClick={() => {
+          setClockFaceEnabled(!clockFaceEnabled);
+        }}
+        className="bg-gray-1 border-[#FF4D00] select-none  relative drop-shadow-xl border-[6px] mx-auto my-auto w-4 h-4 rounded-full z-10 flex items-center justify-center"
+      ></button>
       {/* Hours Hand */}
       <div
-        className="bg-white dark:bg-black  pt-20 sm:pt-28 shadow-xl"
+        className="bg-gray-3 dark:bg-black  pt-20 lg:pt-28 drop-shadow rounded-b"
         style={getHandStyle(hoursRotation)}
       >
-        <div className="dark:bg-white bg-black w-[12px] sm:w-4 shadow-xl h-24 sm:h-[10rem] rounded-b"></div>
+        <div className="dark:bg-white bg-black w-[12px] lg:w-[18px]  h-24 lg:h-[9.5rem] rounded-b"></div>
       </div>
-
       {/* Minutes Hand */}
       <div
-        className="bg-white dark:bg-black pt-20 sm:pt-28  shadow-xl"
+        className="bg-gray-3 dark:bg-black pt-20 lg:pt-28  drop-shadow rounded-b-full"
         style={getHandStyle(minutesRotation)}
       >
-        <div className="dark:bg-white bg-black w-[8px] sm:w-3 shadow-xl h-40  sm:h-[16rem] rounded-b"></div>
+        <div className="dark:bg-white bg-black w-[8px] lg:w-3  h-40  lg:h-[13.8rem] rounde-b-sm lg:rounded-b"></div>
       </div>
-
       {/* Seconds Hand */}
       <div
-        className="bg-white dark:bg-black  pt-[15rem] sm:pt-[25rem] shadow-xl "
+        className="bg-gray-3 dark:bg-black  pt-24  w-4 drop-shadow rounded-xl"
+        style={{
+          ...getHandStyle(secondsRotation + 180),
+        }}
+      />
+      <div
+        className="bg-gray-3 dark:bg-black  pt-[15rem] lg:pt-[21.1rem]  drop-shadow rounded-b-full"
         style={{
           ...getHandStyle(secondsRotation),
           width: "4px",
         }}
       >
-        <div className="bg-red-500 w-1 h-[4rem] rounded-b shadow-xl "></div>
+        <div className=" bg-yellow-500 w-[5px] h-[5.9rem] rounded-b "></div>
       </div>
     </div>
   );
@@ -201,8 +261,7 @@ const CurrentTime: React.FC = () => {
       suppressHydrationWarning
       className="text-gray-10 absolute text-xs top-0 left-0 p-8 font-mono"
     >
-      {time.toLocaleTimeString([], { hour12: false })}{" "}
-      {time.getHours() >= 12 ? "PM" : "AM"}
+      {time.toLocaleTimeString([], { hour12: true })}{" "}
     </div>
   );
 };

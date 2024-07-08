@@ -26,8 +26,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={cn(inter.variable, jbmono.variable, 'dark')}>{children}</body>
+    <html
+      lang="en"
+      className={cn(inter.variable, jbmono.variable, "dark antialiased")}
+    >
+      <body>{children}</body>
     </html>
   );
 }

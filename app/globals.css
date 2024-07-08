@@ -2,6 +2,7 @@
 @import "@radix-ui/colors/gray.css"; 
 @import "@radix-ui/colors/gray-dark.css"; 
 
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities; 
@@ -20,4 +21,131 @@ body {
   }
   
 }
+.clockface{
+  box-shadow: 1.3em 0.5em 0 -1em var(--gray-4), 0 -0.1em 0.3em 0 var(--gray-1), 0 0 0 1em var(--gray-2), 0 0.6em 1.2em 0 rgba(0, 0, 0, 0.4), inset 0 0.5em 1em 0 rgba(0, 0, 0, 0.2), inset 0 0 8em 0 rgba(0, 0, 0, 0.25);
+}
+
+.dark .clockface-inner{
+  box-shadow: inset 3px 1.5px 10px 0  rgb(0 0 0 / 0.5), inset -1.2em -0.3em 0 -1em var(--gray-4);
+  @apply border-4 border-gray-2
+}
+
+ .clockface-inner {
+  box-shadow: inset 3px 1.5px 10px 0  rgb(0 0 0 / 0.3), inset -1.2em -0.3em 0 -1em #ffffff;
+}
+
+
+
+.clockface .hour {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  width: 0.5em;
+  height: 100%;
+  background: transparent;
+  box-shadow: 0 -1.6em 0 -0.1em var(--gray-11), 0 1.6em 0 -0.1em var(--gray-11);
+  transform: rotate(30deg);
+  }
+  .clockface .hour:after, .clockface .hour:before {
+  display: block;
+  content: "";
+  position: absolute;
+  height: inherit;
+  width: inherit;
+  background: inherit;
+  box-shadow: inherit;
+  backface-visibility: inherit;
+  }
+  .clockface .hour:before {
+  transform: rotate(30deg);
+  }
+  .clockface .hour:after {
+  transform: rotate(-30deg);
+  }
+  .clockface .hour:nth-of-type(1) {
+  transform: rotate(-60deg);
+  }
+  .clockface .min {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  width: 0.5em;
+  height: 100%;
+  background: transparent;
+  box-shadow: 0 -1.6em 0 -0.1em var(--gray-11), 0 1.6em 0 -0.1em var(--gray-11);
+  z-index: -1;
+  transform: rotate(-54deg);
+  }
+  .clockface .min:after, .clockface .min:before {
+  display: block;
+  content: "";
+  position: absolute;
+  height: inherit;
+  width: inherit;
+  background: inherit;
+  box-shadow: inherit;
+  backface-visibility: inherit;
+  z-index: 0;
+  }
+  .clockface .min:before {
+  transform: rotate(6deg);
+  }
+  .clockface .min:after {
+  transform: rotate(12deg);
+  }
+  .clockface .min:nth-child(2) {
+  transform: rotate(-36deg);
+  }
+  .clockface .min:nth-child(3) {
+  transform: rotate(-18deg);
+  }
+  .clockface .min:nth-child(4) {
+  transform: rotate(6deg);
+  }
+  .clockface .min:nth-child(5) {
+  transform: rotate(24deg);
+  } 
+   
+
  
+
+  
+:nth-child(1) { --nth-child: 1 }
+:nth-child(2) { --nth-child: 2 }
+:nth-child(3) { --nth-child: 3 }
+:nth-child(4) { --nth-child: 4 }
+:nth-child(5) { --nth-child: 5}
+:nth-child(6) { --nth-child: 6 }
+:nth-child(7) { --nth-child: 7 }
+:nth-child(8) { --nth-child: 8 }
+:nth-child(9) { --nth-child: 9 }
+:nth-child(10) { --nth-child: 10 }
+:nth-child(11) { --nth-child: 11 }
+:nth-child(12) { --nth-child: 12 }
+ol li{
+  counter-increment: customlistcounter;
+}
+
+ol li:before {
+  content: counter(customlistcounter) "";
+  @apply text-gray-11;
+  }
+
+li{  
+  @apply inset-0 mx-auto my-auto text-5xl w-1/2 h-1/2 font-medium ;
+    position:absolute;
+    text-align:center;
+    display:flex;
+    justify-content:center;
+    align-items:center; 
+    color:white;  
+    transform:rotateZ(calc((var(--nth-child) + 6)*calc(360/12)*1deg))
+            translateY(91%)
+            rotateZ(calc((var(--nth-child) + 6)*calc(360/12)*-1deg));
+}
