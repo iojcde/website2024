@@ -3,11 +3,11 @@ import Link from "next/link";
 const ProjectLayout = ({ children, title, date }) => {
   return (
     <div>
-      <div className=" w-full sm:py-24 py-12">
+      <div className=" w-full lg:py-24 py-12">
         <div className="max-w-screen-xl mx-auto relative px-4">
           <Link
             href="/labs"
-            className="sm:absolute hover:text-gray-12 transition flex text-gray-11 items-center gap-1  text-sm no-underline left-4 top-0 mb-4"
+            className="lg:absolute hover:text-gray-12 transition flex text-gray-11 items-center gap-1  text-sm no-underline left-4 top-0 mb-4"
           >
             <svg
               width="18px"
