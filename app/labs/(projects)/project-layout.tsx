@@ -1,6 +1,10 @@
 import Link from "next/link";
 
-const ProjectLayout = ({ children, title, date }) => {
+const ProjectLayout: React.FC<{
+  title: string;
+  date: string;
+  children: React.ReactNode;
+}> = ({ children, title, date }) => {
   return (
     <div>
       <div className=" w-full lg:py-24 py-12">
