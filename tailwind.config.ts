@@ -9,6 +9,13 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      container: {
+        center: true,
+        screens: {
+          sm: "640px",
+          xl: "1280px",
+        },
+      },
       transitionTimingFunction: {
         DEFAULT: "cubic-bezier(0.2, 0.8, 0.2, 1)",
       },

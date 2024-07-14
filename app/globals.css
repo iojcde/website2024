@@ -7,11 +7,16 @@
 @tailwind components;
 @tailwind utilities; 
 
+a{
+  text-decoration-thickness: 1px;
+  @apply underline  underline-offset-2  decoration-gray-10   ;
+
+}
 
  
 
 body {
-  @apply bg-gray-1 text-gray-11;
+  @apply bg-gray-1 text-gray-12;
 
 }
 
@@ -26,7 +31,7 @@ body {
 }
 
 .dark .clockface-inner{
-  box-shadow: inset 3px 1.5px 10px 0  rgb(0 0 0 / 0.5), inset -1.2em -0.3em 0 -1em var(--gray-4);
+  box-shadow: inset 3px 1.5px 10px 0  rgb(0 0 0 / 0.5), inset -1.2em -0.6em 0 -1em var(--gray-4);
   @apply border-4 border-gray-2
 }
 
@@ -78,7 +83,7 @@ body {
   width: 0.5em;
   height: 100%;
   background: transparent;
-  box-shadow: 0 -1.6em 0 -0.1em var(--gray-11), 0 1.6em 0 -0.1em var(--gray-11);
+  box-shadow: 0 -1.6em 0 -0.1em var(--gray-12), 0 1.6em 0 -0.1em var(--gray-12);
   z-index: -1;
   transform: rotate(-54deg);
   }
@@ -134,18 +139,17 @@ ol li{
 
 ol li:before {
   content: counter(customlistcounter) "";
-  @apply text-gray-11;
+  @apply text-gray-12;
   }
 
 li{  
-  @apply inset-0 mx-auto my-auto text-5xl w-1/2 h-1/2 font-medium ;
+  @apply inset-0 mx-auto my-auto  text-[44px] w-1/2 h-1/2 font-medium ;
     position:absolute;
     text-align:center;
     display:flex;
     justify-content:center;
-    align-items:center; 
-    color:white;  
+    align-items:center;  
     transform:rotateZ(calc((var(--nth-child) + 6)*calc(360/12)*1deg))
-            translateY(91%)
+            translateY(92%)
             rotateZ(calc((var(--nth-child) + 6)*calc(360/12)*-1deg));
 }

@@ -1,5 +1,8 @@
 import Image from "next/image";
-import UltraSmoothLongSecondsHand, { CurrentTime } from "./clock";
+import {
+  CurrentTime,
+  UltraSmoothRoundedLongClock,
+} from "./labs/(projects)/clock/clock";
 import ScreenSize from "./size";
 import Link from "next/link";
 import { Spotlight } from "./components/spotlight";
@@ -9,16 +12,16 @@ export default function Home() {
   return (
     <div className="p-6  mx-auto relative  h-dvh overflow-hidden w-full">
       <CurrentTime />
-      <UltraSmoothLongSecondsHand />
+      <UltraSmoothRoundedLongClock />
       <ScreenSize />
       <Credits />
-      <Spotlight />
+      <Spotlight fill="var(--gray-10)" />
 
       <div className="max-w-6xl m-auto mt-16 relative z-20">
         {" "}
         <div className="text-right  ">
           <h1 className="font-semibold text-2xl text-gray-12">Jeeho Ahn</h1>
-          <p>shikanoko nokonoko koshitantan</p>
+          <p className="text-gray-10">shikanoko nokonoko koshitantan</p>
         </div>
         <div className="space-y-4 -ml-2 ">
           <Link className="block w-fit px-2" href="/labs">
