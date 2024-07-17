@@ -8,7 +8,7 @@ const inter = localFont({
   src: [
     { path: "../fonts/InterVariable.woff2" },
     {
-      path: "../fonts/InterVariable-italic.woff2",
+      path: "../fonts/InterVariable-Italic.woff2",
       style: "italic",
     },
   ],
