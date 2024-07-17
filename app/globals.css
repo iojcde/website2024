@@ -7,16 +7,20 @@
 @tailwind components;
 @tailwind utilities; 
 
-a{
+p a{
   text-decoration-thickness: 1px;
   @apply underline  underline-offset-2  decoration-gray-10   ;
 
+}
+:root{
+  font-optical-sizing: auto;
+  font-feature-settings: 'liga' 1, 'calt' 1;
 }
 
  
 
 body {
-  @apply bg-gray-1 text-gray-12;
+  @apply bg-gray-1 text-gray-12 selection:bg-gray-12 selection:opacity-50 selection:text-gray-1;
 
 }
 
@@ -153,3 +157,5 @@ li{
             translateY(92%)
             rotateZ(calc((var(--nth-child) + 6)*calc(360/12)*-1deg));
 }
+
+ 

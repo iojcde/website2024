@@ -1,12 +1,17 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import localFont from "next/font/local";
 import { JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 
-const inter = Inter({
-  subsets: ["latin"],
-  display: "swap",
+const inter = localFont({
+  src: [
+    { path: "../fonts/InterVariable.woff2" },
+    {
+      path: "../fonts/InterVariable-italic.woff2",
+      style: "italic",
+    },
+  ],
   variable: "--font-inter",
 });
 const jbmono = JetBrains_Mono({

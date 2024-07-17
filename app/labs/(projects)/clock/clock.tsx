@@ -263,9 +263,11 @@ const CurrentTime: React.FC = () => {
   return (
     <div
       suppressHydrationWarning
-      className="text-gray-10 absolute text-xs top-0 left-0 p-8 font-mono"
+      className="text-gray-10 absolute text-xs group top-0 left-0 p-8 font-mono"
     >
-      {time.toLocaleTimeString([], { hour12: true })}{" "}
+      {time.toLocaleTimeString([], { hour12: true, timeZone: "Asia/Seoul" })}
+      {` `}
+      <span className="opacity-0 group-hover:opacity-100 transition"> KST</span>
     </div>
   );
 };

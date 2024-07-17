@@ -29,7 +29,7 @@ const ClockPage = () => {
           Clocks are cool.
         </p>
 
-        <div className="mt-24 text-gray-10">
+        <div className="mt-24 text-gray-10 text-sm">
           Built with{` `}
           <a href="https://react.dev">React</a>
           {` `}
