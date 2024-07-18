@@ -1,8 +1,13 @@
+import ProjectLayout from "../project-layout";
+import { PlannerComponent } from "./planner";
+
 const Planner = () => {
   return (
-    <div>
-      <h1>Planner(WIP)</h1>
-    </div>
+    <ProjectLayout title="Planner" date="July 2024">
+      <div className="bg-gray-2 py-4">
+        <PlannerComponent />
+      </div>{" "}
+    </ProjectLayout>
   );
 };
 

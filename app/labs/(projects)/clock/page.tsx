@@ -6,12 +6,12 @@ import ProjectLayout from "../project-layout";
 const ClockPage = () => {
   return (
     <ProjectLayout title={"Clock"} date={"July 2024"}>
-      <div className="relative bg-gray-1 border border-gray-4 rounded-xl w-full overflow-hidden h-[85dvh]  ">
+      <div className="relative bg-gray-1 border-y  w-full overflow-hidden h-[85dvh]  ">
         <Spotlight fill="var(--gray-10)" />
         <UltraSmoothRoundedLongClock />
       </div>
       <div className="container max-w-screen-sm ">
-        <p className="mt-8  leading-relaxed">
+        <p className="mt-12  leading-relaxed">
           So I built this clock.
           <br /> It&apos;s a clock.
           <br /> It tells time.

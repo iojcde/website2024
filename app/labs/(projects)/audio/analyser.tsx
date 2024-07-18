@@ -157,12 +157,12 @@ const AudioRecorder = () => {
         audioContext={audioContextRef.current}
       />
 
-      <div className="text-4xl">{maxNote}</div>
-      <div>
+      <div className="text-4xl mb-4">{maxNote}</div>
+      <div className="text-gray-11">
         Current Pitch: ({maxNote}) {maxFrequency.toFixed(2)} Hz{" "}
         {noisePercentage.toFixed(2)}
       </div>
-      <div>
+      <div className="text-gray-11">
         Highest Frequency: {highestFrequency.toFixed(2)} Hz ({highestNote})
       </div>
     </div>
