@@ -14,15 +14,14 @@ export const plannit = async ({
   date: string;
   rest: number;
 }) => {
-  const groq = createOpenAI({
-    baseURL: "https://api.groq.com/openai/v1",
-    apiKey: process.env.GROQ_KEY,
-  });
+  if (process.env.OPENAI_API_KEY === undefined) {
+    throw new Error("OPENAI_API_KEY is not set");
+  }
 
   const { object } = await generateObject({
     model: openai("gpt-4o"),
     prompt: `You are a system that helps people plan your day based on their constraints.
-    Current time to use as reference point: ${date}.  
+    Current time to use as reference point: ${date}. Consider typical meal times and make plans that include them.
     The user requested ${rest}mins of rest time. Place rest times between activities
     You MUST say all activities in the language of the constraints supplied. If the user is a student, don't plan activities during typical school times(ex: 8am-3pm).
 

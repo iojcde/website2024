@@ -6,7 +6,7 @@ import ProjectLayout from "../project-layout";
 const ClockPage = () => {
   return (
     <ProjectLayout title={"Clock"} date={"July 2024"}>
-      <div className="relative bg-gray-1 border-y  w-full overflow-hidden h-[85dvh]  ">
+      <div className="relative bg-black border-y  w-full overflow-hidden h-[90dvh]  ">
         <Spotlight fill="var(--gray-10)" />
         <UltraSmoothRoundedLongClock />
       </div>

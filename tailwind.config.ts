@@ -23,11 +23,6 @@ const config: Config = {
         sans: ["var(--font-inter)"],
         mono: ["var(--font-jbmono)"],
       },
-      borderRadius: {
-        lg: "var(--radius)",
-        md: "calc(var(--radius) - 2px)",
-        sm: "calc(var(--radius) - 4px)",
-      },
 
       colors: {
         gray: {
