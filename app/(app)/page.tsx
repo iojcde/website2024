@@ -16,17 +16,16 @@ export default function Home() {
       {/* <UltraSmoothRoundedLongClock /> */}
       <ScreenSize />
       <Credits />
-      <Spotlight fill="var(--gray-11)" />
 
       <div className="max-w-6xl m-auto mt-16 relative z-20">
         {" "}
         <div className="text-right  ">
-          <h1 className=" font-medium  text-3xl text-gray-12 font-display ">
+          <h1 className=" font-semibold text-2xl text-gray-12 font-display ">
             Jeeho Ahn
           </h1>
-          <p className="text-gray-10">i wanna be an engineer</p>
+          <p className="text-gray-10">wow</p>
         </div>
-        <div className="space-y-4 -ml-2 sm:mt-0 mt-12 ">
+        <div className="space-y-4 -ml-2 sm:mt-0 mt-12  font-medium">
           <Link className=" w-fit px-2  group block " href="/labs">
             Labs{" "}
             {/* <ArrowRight
@@ -34,7 +33,7 @@ export default function Home() {
             /> */}
             <span className="group-hover:translate-x-0 inline-block -translate-x-2 transition opacity-0 group-hover:opacity-100 group-hover:scale-105 ">
               {" "}
-              
+              →
             </span>
           </Link>
 
@@ -42,7 +41,7 @@ export default function Home() {
             Projects{" "}
             <span className="group-hover:translate-x-0 inline-block -translate-x-2 transition opacity-0 group-hover:opacity-100 group-hover:scale-105 ">
               {" "}
-              
+              →
             </span>
           </Link>
 
@@ -50,7 +49,7 @@ export default function Home() {
             Notes{" "}
             <span className="group-hover:translate-x-0 inline-block -translate-x-2 transition opacity-0 group-hover:opacity-100 group-hover:scale-105 ">
               {" "}
-              
+              →
             </span>
           </Link>
         </div>
@@ -58,3 +57,8 @@ export default function Home() {
     </div>
   );
 }
+
+export const metadata = {
+  title: "Jeeho Ahn",
+  description: "Jeeho Ahn's personal website",
+};

@@ -39,7 +39,7 @@ const ProjectLayout: React.FC<{
             Labs{" "}
           </Link>
           <div className="container max-w-screen-sm mt-4 pb-12">
-            <h1 className="text-white text-2xl font-medium">{title}</h1>
+            <h1 className=" text-2xl font-medium">{title}</h1>
             <span className="text-sm text-gray-10 ">{date}</span>
           </div>
         </div>

@@ -19,7 +19,7 @@ export const plannit = async ({
   }
 
   const { object } = await generateObject({
-    model: openai("gpt-4o"),
+    model: openai("gpt-4o-mini"),
     prompt: `You are a system that helps people plan your day based on their constraints.
     Current time to use as reference point: ${date}. Consider typical meal times and make plans that include them.
     The user requested ${rest}mins of rest time. Place rest times between activities

@@ -20,7 +20,7 @@ const config: Config = {
         DEFAULT: "cubic-bezier(0.2, 0.8, 0.2, 1)",
       },
       fontFamily: {
-        sans: ["var(--font-inter)"],
+        sans: ["var(--font-pt)"],
         mono: ["var(--font-jbmono)"],
       },
 

@@ -64,7 +64,7 @@ export const PlannerComponent = () => {
               setConstraints([...constraints, input]);
               setInput("");
             }}
-            className=" w-14 aspect-square rounded-full items-center flex justify-center bg-black border   transition"
+            className=" w-14 aspect-square rounded-full items-center flex justify-center  border   transition"
           >
             <Plus />
           </button>

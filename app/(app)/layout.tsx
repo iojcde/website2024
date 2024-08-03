@@ -6,13 +6,16 @@ import { cn } from "@/lib/utils";
 
 const inter = localFont({
   src: [
-    { path: "../fonts/InterVariable.woff2" },
+    // { path: "../fonts/InterVariable.woff2" },
+    // {
+    //   path: "../fonts/InterVariable-Italic.woff2",
+    //   style: "italic",
+    // },
     {
-      path: "../fonts/InterVariable-Italic.woff2",
-      style: "italic",
+      path: "../../fonts/PretendardVariable.woff2",
     },
   ],
-  variable: "--font-inter",
+  variable: "--font-pt",
 });
 const jbmono = JetBrains_Mono({
   subsets: ["latin"],
@@ -33,7 +36,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={cn(inter.variable, jbmono.variable, "dark antialiased")}
+      className={cn(inter.variable, jbmono.variable, " antialiased")}
     >
       <body>{children}</body>
     </html>
