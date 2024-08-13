@@ -1,11 +1,12 @@
 
 @import "@radix-ui/colors/gray.css"; 
-@import "@radix-ui/colors/gray-dark.css"; 
+@import "@radix-ui/colors/gray-alpha.css";
 
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities; 
+
 
 p a{
   text-decoration-thickness: 1px;
@@ -18,6 +19,8 @@ p a{
   
 }
 html,body{
+  scroll-padding-top: 3rem;
+  scroll-behavior: smooth;
   
   height: 100%;
 }
@@ -226,3 +229,12 @@ li{
     @apply bg-background text-foreground;
   }
 }
+
+
+
+ 
+/* h1, h2,h3 {
+  @apply tracking-[-0.01em]
+} */
+
+ 

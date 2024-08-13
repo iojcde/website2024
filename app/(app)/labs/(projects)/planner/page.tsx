@@ -1,4 +1,4 @@
-import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert";
+import { Alert, AlertTitle, AlertDescription } from "@/app/components/ui/alert";
 import ProjectLayout from "../project-layout";
 import { PlannerComponent } from "./planner";
 import { AlertCircle } from "lucide-react";

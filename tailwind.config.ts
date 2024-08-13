@@ -9,12 +9,12 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      screens: {
+        sm: "720px",
+        xl: "1200px",
+      },
       container: {
         center: true,
-        screens: {
-          sm: "640px",
-          xl: "1280px",
-        },
       },
       transitionTimingFunction: {
         DEFAULT: "cubic-bezier(0.2, 0.8, 0.2, 1)",
@@ -115,5 +115,6 @@ const config: Config = {
     },
   },
   plugins: [require("tailwindcss-animate"), require("@tailwindcss/typography")],
+  presets: [require("windy-radix-typography")],
 };
 export default config;

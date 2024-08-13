@@ -1,4 +1,4 @@
-import { Spotlight } from "@/app/(app)/components/spotlight";
+import { Spotlight } from "@/app/components/spotlight";
 import { UltraSmoothRoundedLongClock } from "./clock";
 import Link from "next/link";
 import ProjectLayout from "../project-layout";

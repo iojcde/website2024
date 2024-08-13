@@ -2,7 +2,7 @@ import Link from "next/link";
 import { getPlaiceholder } from "plaiceholder";
 
 import Image from "next/image";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/app/components/ui/button";
 import { cn } from "@/lib/utils";
 
 const getImage = async (src: string) => {

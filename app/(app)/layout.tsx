@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import { JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
+import Nav from "../components/nav";
 
 const inter = localFont({
   src: [
@@ -38,7 +39,9 @@ export default function RootLayout({
       lang="en"
       className={cn(inter.variable, jbmono.variable, " antialiased")}
     >
-      <body>{children}</body>
+      <body>
+        {children} <Nav />
+      </body>
     </html>
   );
 }

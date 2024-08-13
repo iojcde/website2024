@@ -5,9 +5,7 @@ import {
 } from "./labs/(projects)/clock/clock";
 import ScreenSize from "./size";
 import Link from "next/link";
-import { Spotlight } from "./components/spotlight";
 import Credits from "./credits";
-import { ArrowRight } from "lucide-react";
 
 export default function Home() {
   return (
@@ -23,10 +21,13 @@ export default function Home() {
           <h1 className=" font-semibold text-2xl text-gray-12 font-display ">
             Jeeho Ahn
           </h1>
-          <p className="text-gray-10">wow</p>
+          <p className="text-gray-10">
+            {/* Professional "works on my machine" investigator */}
+            Professional digital firefighter
+          </p>
         </div>
-        <div className="space-y-4 -ml-2 sm:mt-0 mt-12  font-medium">
-          <Link className=" w-fit px-2  group block " href="/labs">
+        <div className="space-y-4  -ml-2 sm:mt-0 mt-12  font-medium">
+          <Link className=" w-fit px-2  group block text-gray-12 " href="/labs">
             Labs{" "}
             {/* <ArrowRight
                    size={16}
@@ -37,7 +38,10 @@ export default function Home() {
             </span>
           </Link>
 
-          <Link className=" w-fit px-2 group  block " href="/projects">
+          <Link
+            className=" w-fit px-2 group  block text-gray-12"
+            href="/projects"
+          >
             Projects{" "}
             <span className="group-hover:translate-x-0 inline-block -translate-x-2 transition opacity-0 group-hover:opacity-100 group-hover:scale-105 ">
               {" "}
@@ -45,8 +49,8 @@ export default function Home() {
             </span>
           </Link>
 
-          <Link className=" w-fit px-2 group  block" href="/notes">
-            Notes{" "}
+          <Link className=" w-fit px-2 group  block text-gray-12" href="/blog">
+            Blog{" "}
             <span className="group-hover:translate-x-0 inline-block -translate-x-2 transition opacity-0 group-hover:opacity-100 group-hover:scale-105 ">
               {" "}
               →

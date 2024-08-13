@@ -1,10 +1,10 @@
 "use client";
-import { Button } from "@/components/ui/button";
-import { Textarea } from "@/components/ui/textarea";
+import { Button } from "@/app/components/ui/button";
+import { Textarea } from "@/app/components/ui/textarea";
 import { Loader2, Plus } from "lucide-react";
 import { useState } from "react";
 import { plannit } from "./plannit";
-import { Input } from "@/components/ui/input";
+import { Input } from "@/app/components/ui/input";
 
 export const PlannerComponent = () => {
   const [constraints, setConstraints] = useState<string[]>([]);
@@ -29,7 +29,7 @@ export const PlannerComponent = () => {
         <h2 className="text-gray-11 font-medium text-sm">
           Input constraints for your daily plan
         </h2>
-        <div className="prose dark:prose-invert">
+        <div className="prose dark:prose-invert prose-gray">
           <div className="mt-4 text-gray-11 p-2 border rounded-md">
             {constraints.map((c) => (
               <div key={c}>
