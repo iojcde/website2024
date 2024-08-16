@@ -43,7 +43,7 @@ export default async function Post({ params: { slug = "" } }) {
         (node.tag == "h1" || node.tag == "h2" || node.tag == "h3")
       );
     })
-    .map((n) => n.children[0].text);
+    .map((n) => (n.children as any)[0].text);
 
   return (
     <article className="pt-28 pb-16">
@@ -120,6 +120,8 @@ export default async function Post({ params: { slug = "" } }) {
 
 export async function generateMetadata({
   params: { slug },
+}: {
+  params: { slug: any };
 }): Promise<Metadata> {
   const post = await queryPostBySlug({ slug });
 
