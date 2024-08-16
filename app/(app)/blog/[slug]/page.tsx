@@ -147,3 +147,5 @@ const queryPostBySlug = cache(async ({ slug }: { slug: string }) => {
 
   return result.docs?.[0] || null;
 });
+
+export const revalidate = 10;
