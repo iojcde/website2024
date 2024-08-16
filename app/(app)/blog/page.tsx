@@ -12,7 +12,7 @@ const NotesPage = async () => {
   console.log(data);
 
   return (
-    <div className=" pt-24 container max-w-screen-sm">
+    <div className=" pt-24 container max-w-screen-sm px-6">
       <div className=" text-2xl font-semibold">Blog</div>
 
       <div className=" flex flex-col gap-6   mt-12">

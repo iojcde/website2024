@@ -3,7 +3,9 @@ import withPlaiceholder from "@plaiceholder/next";
 import { withPayload } from "@payloadcms/next/withPayload";
 
 const NEXT_PUBLIC_SERVER_URL =
-  process.env.NEXT_PUBLIC_SERVER_URL || "http://localhost:3000";
+  process.env.NEXT_PUBLIC_SERVER_URL ||
+  process.env.NEXT_PUBLIC_VERCEL_URL ||
+  "http://localhost:3000";
 
 /**
  * @type {import('next').NextConfig}
