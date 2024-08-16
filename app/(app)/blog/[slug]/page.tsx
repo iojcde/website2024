@@ -46,7 +46,7 @@ export default async function Post({ params: { slug = "" } }) {
     .map((n) => (n.children as any)[0].text);
 
   return (
-    <article className="pt-28 pb-16">
+    <article className="lg:pt-20 pt-8 pb-16">
       {/* <div className="fixed inset-x-0 h-20 top-0 z-10 bg-gradient-to-b from-gray-1 to-transparent pointer-events-none backdrop-blur-[1px] [mask-image:linear-gradient(to_bottom,var(--gray-12)_25%,transparent)]"></div> */}
       <div className="fixed inset-x-0 h-20 bottom-0 z-10 bg-gradient-to-t from-gray-1 to-transparent pointer-events-none backdrop-blur-[1px] [mask-image:linear-gradient(to_top,var(--gray-12)_25%,transparent)]"></div>
 
@@ -91,7 +91,7 @@ export default async function Post({ params: { slug = "" } }) {
             ))}
           </div>
         </div>
-        <div className="container max-w-screen-sm px-6 pb-12">
+        <div className="container max-w-screen-sm mt-10 px-6 pb-12">
           <h1 className=" text-xl font-semibold">{post.title}</h1>
           <span className="text-sm text-gray-10 ">
             {new Date(post.publishedAt as string).toLocaleDateString("en-US", {
