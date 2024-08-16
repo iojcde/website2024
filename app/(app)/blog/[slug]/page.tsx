@@ -51,7 +51,7 @@ export default async function Post({ params: { slug = "" } }) {
       <div className="fixed inset-x-0 h-20 bottom-0 z-10 bg-gradient-to-t from-gray-1 to-transparent pointer-events-none backdrop-blur-[1px] [mask-image:linear-gradient(to_top,var(--gray-12)_25%,transparent)]"></div>
 
       <div className="container relative max-w-screen-xl">
-        <div className="sm:absolute lg:fixed  translate-x-0">
+        <div className="sm:absolute lg:fixed  translate-x-0 px-6">
           <Link
             href="/blog"
             className="hover:text-gray-12 transition flex text-gray-11 items-center gap-1  text-sm no-underline  mb-4"
@@ -83,7 +83,7 @@ export default async function Post({ params: { slug = "" } }) {
             Blog{" "}
           </Link>
 
-          <div className="flex flex-col gap-3 text-gray-11 text-xs mt-16">
+          <div className="sm:flex hidden flex-col gap-3 text-gray-11 text-xs mt-16">
             {titles.map((title) => (
               <a href={`#${title}`} key={title}>
                 {title}
