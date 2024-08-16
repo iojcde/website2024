@@ -45,7 +45,7 @@ export const ImageMedia: React.FC<MediaProps> = (props) => {
 
     src = `${
       (process.env.NEXT_PUBLIC_SERVER_URL as string) ||
-      (`https://${process.env.VERCEL_URL}` as string)
+      (`https://${process.env.NEXT_PUBLIC_VERCEL_URL}` as string)
     }${url}`;
     console.log(process.env);
   }
