@@ -10,6 +10,7 @@ import { fileURLToPath } from "url";
 
 import { anyone } from "../access/anyone";
 import { authenticated } from "../access/authenticated";
+import { getPlaiceholder } from "plaiceholder";
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
@@ -48,11 +49,10 @@ export const Media: CollectionConfig = {
   ],
   hooks: {
     afterChange: [
-      ({ doc }) => {
-        if (doc.plaiceholder) {
-          const { base64 } = JSON.parse(doc.plaiceholder);
-          doc.plaiceholder = base64;
-        }
+      async ({ doc }) => {
+        const { base64 } = await getPlaiceholder(doc.url);
+        doc.plaiceholder = base64;
+
         return doc;
       },
     ],
