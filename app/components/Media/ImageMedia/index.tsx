@@ -30,7 +30,6 @@ export const ImageMedia: React.FC<MediaProps> = (props) => {
   let height: number | undefined;
   let alt = altFromProps;
   let src: StaticImageData | string = srcFromProps || "";
-  console.log(src);
   if (!src && resource && typeof resource === "object") {
     const {
       alt: altFromResource,
@@ -46,8 +45,9 @@ export const ImageMedia: React.FC<MediaProps> = (props) => {
 
     src = `${
       (process.env.NEXT_PUBLIC_SERVER_URL as string) ||
-      (`https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}` as string)
+      (`https://${process.env.VERCEL_URL}` as string)
     }${url}`;
+    console.log(process.env);
   }
 
   // NOTE: this is used by the browser to determine which image to download at different screen sizes
