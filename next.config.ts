@@ -16,11 +16,11 @@ const config = {
 
         return {
           hostname: url.hostname,
-          protocol: url.protocol.replace(":", ""),
+          protocol: url.protocol.replace(":", "") as "http" | "https",
         };
       }),
       {
-        protocol: "https",
+        protocol: "https" as "https",
         hostname: "cdn.jcde.xyz",
         pathname: "/u/*",
       },
