@@ -44,3 +44,4 @@ const NotesPage = async () => {
 };
 
 export default NotesPage;
+export const revalidate = 10;
