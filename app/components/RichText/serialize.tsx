@@ -24,6 +24,7 @@ import {
 
 export type NodeTypes =
   | DefaultNodeTypes
+  // @ts-expect-error
   | SerializedBlockNode<MediaBlockProps | BannerBlockProps | CodeBlockProps>;
 
 type Props = {
@@ -147,12 +148,13 @@ export function serializeLexical({ nodes }: Props): JSX.Element {
             case "heading": {
               const Tag = node?.tag;
 
-              console.log(serializedChildren);
-
               return (
                 <Tag
                   className="col-start-2"
-                  id={serializedChildren.props.children[0].props.children}
+                  id={
+                    (serializedChildren as JSX.Element).props.children[0].props
+                      .children
+                  }
                   key={index}
                 >
                   {serializedChildren}
