@@ -16,6 +16,7 @@
     "@payloadcms/plugin-seo": "3.0.0-beta.73",
     "@payloadcms/richtext-lexical": "^3.0.0-beta.73",
     "@payloadcms/richtext-slate": "3.0.0-beta.73",
+    "@payloadcms/storage-vercel-blob": "^3.0.0-beta.29",
     "@payloadcms/ui": "3.0.0-beta.73",
     "@plaiceholder/next": "^3.0.0",
     "@radix-ui/colors": "^3.0.0",

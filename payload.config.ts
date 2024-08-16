@@ -3,6 +3,7 @@ import path from "path";
 import { en } from "payload/i18n/en";
 
 import { Media } from "./payload/collections/Media";
+import { vercelBlobStorage } from "@payloadcms/storage-vercel-blob";
 import { Posts } from "./payload/collections/Posts";
 
 import { seoPlugin } from "@payloadcms/plugin-seo";
@@ -103,6 +104,15 @@ export default buildConfig({
     seoPlugin({
       generateTitle,
       generateURL,
+    }),
+    vercelBlobStorage({
+      enabled: true, // Optional, defaults to true
+      // Specify which collections should use Vercel Blob
+      collections: {
+        [Media.slug]: true,
+      },
+      // Token provided by Vercel once Blob storage is added to your Vercel project
+      token: process.env.BLOB_READ_WRITE_TOKEN as string,
     }),
   ],
 });
