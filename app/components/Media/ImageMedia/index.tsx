@@ -26,8 +26,6 @@ export const ImageMedia: React.FC<MediaProps> = (props) => {
     src: srcFromProps,
   } = props;
 
-  const [isLoading, setIsLoading] = React.useState(true);
-
   let width: number | undefined;
   let height: number | undefined;
   let alt = altFromProps;
@@ -46,7 +44,10 @@ export const ImageMedia: React.FC<MediaProps> = (props) => {
     height = fullHeight as number;
     alt = altFromResource;
 
-    src = `${process.env.NEXT_PUBLIC_SERVER_URL}${url}`;
+    src = `${
+      (process.env.NEXT_PUBLIC_SERVER_URL as string) ||
+      (process.env.NEXT_PUBLIC_VERCEL_URL as string)
+    }${url}`;
   }
 
   // NOTE: this is used by the browser to determine which image to download at different screen sizes
@@ -64,7 +65,6 @@ export const ImageMedia: React.FC<MediaProps> = (props) => {
       height={!fill ? height : undefined}
       onClick={onClick}
       onLoad={() => {
-        setIsLoading(false);
         if (typeof onLoadFromProps === "function") {
           onLoadFromProps();
         }
