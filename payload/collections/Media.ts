@@ -41,5 +41,20 @@ export const Media: CollectionConfig = {
         },
       }),
     },
+    {
+      name: "plaiceholder",
+      type: "text",
+    },
   ],
+  hooks: {
+    afterChange: [
+      ({ doc }) => {
+        if (doc.plaiceholder) {
+          const { base64 } = JSON.parse(doc.plaiceholder);
+          doc.plaiceholder = base64;
+        }
+        return doc;
+      },
+    ],
+  },
 };

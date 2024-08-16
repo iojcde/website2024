@@ -9,11 +9,9 @@ import React from "react";
 import type { Props as MediaProps } from "../types";
 
 import cssVariables from "@/app/cssVariables";
-
 const { breakpoints } = cssVariables;
 
 export const ImageMedia: React.FC<MediaProps> = (props) => {
-  console.log("ImageMedia props", props);
   const {
     alt: altFromProps,
     fill,
@@ -47,7 +45,6 @@ export const ImageMedia: React.FC<MediaProps> = (props) => {
       (process.env.NEXT_PUBLIC_SERVER_URL as string) ||
       (`https://${process.env.NEXT_PUBLIC_VERCEL_PROJECT_PRODUCTION_URL}` as string)
     }${url}`;
-    console.log(process.env);
   }
 
   // NOTE: this is used by the browser to determine which image to download at different screen sizes
