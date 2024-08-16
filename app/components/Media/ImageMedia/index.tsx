@@ -28,13 +28,15 @@ export const ImageMedia: React.FC<MediaProps> = (props) => {
   let height: number | undefined;
   let alt = altFromProps;
   let src: StaticImageData | string = srcFromProps || "";
+  let plaiceholder: string | undefined;
+
   if (!src && resource && typeof resource === "object") {
     const {
       alt: altFromResource,
-      filename: fullFilename,
       height: fullHeight,
       url,
       width: fullWidth,
+      plaiceholder,
     } = resource;
 
     width = fullWidth as number;
@@ -67,6 +69,7 @@ export const ImageMedia: React.FC<MediaProps> = (props) => {
         }
       }}
       priority={priority}
+      blurDataURL={plaiceholder}
       quality={90}
       sizes={sizes}
       src={src}

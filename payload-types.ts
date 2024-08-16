@@ -117,6 +117,7 @@ export interface Media {
     };
     [k: string]: unknown;
   } | null;
+  plaiceholder?: string | null;
   updatedAt: string;
   createdAt: string;
   url?: string | null;
