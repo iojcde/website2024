@@ -20,9 +20,7 @@ export const generateMeta = async (args: { doc: Post }): Promise<Metadata> => {
     "url" in doc.meta.image &&
     `${process.env.NEXT_PUBLIC_SERVER_URL}${doc.meta.image.url}`;
 
-  const title = doc?.meta?.title
-    ? doc?.meta?.title + " | Payload Website Template"
-    : "Payload Website Template";
+  const title = doc?.meta?.title ? doc?.meta?.title : "Jeeho Ahn";
 
   return {
     description: doc?.meta?.description,
