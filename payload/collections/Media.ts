@@ -48,12 +48,35 @@ export const Media: CollectionConfig = {
     },
   ],
   hooks: {
-    afterChange: [
-      async ({ doc }) => {
-        const { base64 } = await getPlaiceholder(doc.url);
-        doc.plaiceholder = base64;
+    // afterChange: [
+    //   async ({ doc }) => {
+    //     const src = `${
+    //       (process.env.NEXT_PUBLIC_SERVER_URL as string) ||
+    //       (`https://${process.env.NEXT_PUBLIC_VERCEL_PROJECT_PRODUCTION_URL}` as string)
+    //     }${doc.url}`;
 
-        return doc;
+    //     const buffer =
+    //       await fetch(
+    //     src).then(async (res) => Buffer.from(await res.arrayBuffer()));
+    //     const { base64 } = await getPlaiceholder(buffer, { size: 64 });
+    //     doc.plaiceholder = base64;
+
+    //     return doc;
+    //   },
+    // ],
+    beforeChange: [
+      async ({ req, data }) => {
+        const file = req.file?.data;
+
+        if (!file) {
+          return data;
+        }
+
+        const { base64 } = await getPlaiceholder(file, { size: 64 });
+
+        data.plaiceholder = base64;
+
+        return data;
       },
     ],
   },

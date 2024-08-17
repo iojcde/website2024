@@ -28,7 +28,7 @@ export const ImageMedia: React.FC<MediaProps> = (props) => {
   let height: number | undefined;
   let alt = altFromProps;
   let src: StaticImageData | string = srcFromProps || "";
-  let plaiceholder: string | undefined;
+  let plaiceholderURL: string | undefined;
 
   if (!src && resource && typeof resource === "object") {
     const {
@@ -42,12 +42,15 @@ export const ImageMedia: React.FC<MediaProps> = (props) => {
     width = fullWidth as number;
     height = fullHeight as number;
     alt = altFromResource;
+    plaiceholderURL = plaiceholder as string;
 
     src = `${
       (process.env.NEXT_PUBLIC_SERVER_URL as string) ||
       (`https://${process.env.NEXT_PUBLIC_VERCEL_PROJECT_PRODUCTION_URL}` as string)
     }${url}`;
   }
+
+  console.log("plaiceholderURL", plaiceholderURL, width, height, src, alt);
 
   // NOTE: this is used by the browser to determine which image to download at different screen sizes
   const sizes = sizeFromProps
@@ -69,7 +72,8 @@ export const ImageMedia: React.FC<MediaProps> = (props) => {
         }
       }}
       priority={priority}
-      blurDataURL={plaiceholder}
+      blurDataURL={plaiceholderURL}
+      placeholder="blur"
       quality={90}
       sizes={sizes}
       src={src}
