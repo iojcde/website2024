@@ -1,5 +1,6 @@
 
 @import "@radix-ui/colors/gray.css"; 
+@import "@radix-ui/colors/amber.css";
 @import "@radix-ui/colors/gray-alpha.css";
 
 
@@ -28,6 +29,7 @@ html,body{
  
 
 body {
+  
   @apply bg-gray-1 text-gray-12 selection:bg-[#fcf6a7] selection:opacity-50 ;
 }
 
@@ -144,17 +146,18 @@ body {
 :nth-child(10) { --nth-child: 10 }
 :nth-child(11) { --nth-child: 11 }
 :nth-child(12) { --nth-child: 12 }
-ol li{
+
+.clock ol li{
   counter-increment: customlistcounter;
 }
 
-ol li:before {
+.clock ol li:before {
   content: counter(customlistcounter) "";
   @apply text-gray-12;
   }
 
-li{  
-  @apply inset-0 mx-auto my-auto  text-[44px] w-1/2 h-1/2 font-medium ;
+.clock li{  
+  @apply inset-0 mx-auto my-auto  text-[44px] w-1/2 h-1/2 font-medium text-gray-12;
     position:absolute;
     text-align:center;
     display:flex;
@@ -163,7 +166,9 @@ li{
     transform:rotateZ(calc((var(--nth-child) + 6)*calc(360/12)*1deg))
             translateY(92%)
             rotateZ(calc((var(--nth-child) + 6)*calc(360/12)*-1deg));
+  
 }
+ 
  
 @layer base {
   :root {
@@ -238,3 +243,8 @@ li{
 } */
 
  
+a:focus-visible {
+  outline: 0px; 
+  text-decoration: none;
+  @apply rounded ring-[#ffc53d] shadow-inner;
+}

@@ -7,13 +7,16 @@ import Nav from "../components/nav";
 
 const inter = localFont({
   src: [
-    // { path: "../fonts/InterVariable.woff2" },
+    // { path: "../../fonts/InterVariable.woff2" },
     // {
-    //   path: "../fonts/InterVariable-Italic.woff2",
+    //   path: "../../fonts/InterVariable-Italic.woff2",
     //   style: "italic",
     // },
+    // {
+    //   path: "../../fonts/PretendardVariable.woff2",
+    // },
     {
-      path: "../../fonts/PretendardVariable.woff2",
+      path: "../../fonts/ABCDiatypeVariable-Trial.woff2",
     },
   ],
   variable: "--font-pt",
@@ -37,7 +40,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={cn(inter.variable, jbmono.variable, " antialiased")}
+      className={cn(inter.variable, jbmono.variable, " antialiased ")}
     >
       <body>
         {children} <Nav />

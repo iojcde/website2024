@@ -15,7 +15,7 @@ export const ImageMedia: React.FC<MediaProps> = (props) => {
   const {
     alt: altFromProps,
     fill,
-    imgClassName,
+    className,
     onClick,
     onLoad: onLoadFromProps,
     priority,
@@ -50,7 +50,7 @@ export const ImageMedia: React.FC<MediaProps> = (props) => {
     }${url}`;
   }
 
-  console.log("plaiceholderURL", plaiceholderURL, width, height, src, alt);
+  // console.log("plaiceholderURL", plaiceholderURL, width, height, src, alt);
 
   // NOTE: this is used by the browser to determine which image to download at different screen sizes
   const sizes = sizeFromProps
@@ -62,7 +62,7 @@ export const ImageMedia: React.FC<MediaProps> = (props) => {
   return (
     <NextImage
       alt={alt || ""}
-      className={cn(imgClassName)}
+      className={className}
       fill={fill}
       height={!fill ? height : undefined}
       onClick={onClick}

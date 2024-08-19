@@ -15,6 +15,7 @@ import { formatDateTime, generateMeta } from "@/lib/utils";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
+import ClipboardButton from "@/app/components/ClipboardButton";
 
 export async function generateStaticParams() {
   const payload = await getPayloadHMR({ config: configPromise });
@@ -46,64 +47,48 @@ export default async function Post({ params: { slug = "" } }) {
     .map((n) => (n.children as any)[0].text);
 
   return (
-    <article className="lg:pt-20 pt-8 pb-16">
+    <article className="sm:pt-20 pt-8 pb-16">
       {/* <div className="fixed inset-x-0 h-20 top-0 z-10 bg-gradient-to-b from-gray-1 to-transparent pointer-events-none backdrop-blur-[1px] [mask-image:linear-gradient(to_bottom,var(--gray-12)_25%,transparent)]"></div> */}
-      <div className="fixed inset-x-0 h-20 bottom-0 z-10 bg-gradient-to-t from-gray-1 to-transparent pointer-events-none backdrop-blur-[1px] [mask-image:linear-gradient(to_top,var(--gray-12)_25%,transparent)]"></div>
+      <div className="fixed inset-x-0 h-20 bottom-0 z-10 bg-gradient-to-t from-gray-1 to-transparent pointer-events-none backdrop-blur-[2px] [mask-image:linear-gradient(to_top,var(--gray-12)_25%,transparent)]"></div>
 
-      <div className="container relative max-w-screen-xl">
-        <div className="sm:absolute lg:fixed  translate-x-0 px-6">
+      <div className="container relative xl:max-w-screen-xl">
+        <div className="md:fixed  px-6 xl:px-0 pt-1">
           <Link
             href="/blog"
-            className="hover:text-gray-12 transition flex text-gray-11 items-center gap-1  text-sm no-underline  mb-4"
+            className="hover:text-gray-12 rounded-xl p-3 max-w-fit -m-3 transition flex text-gray-11 items-center gap-1  text-sm no-underline  mb-4"
           >
             {" "}
-            <svg
-              width="18px"
-              height="18px"
-              strokeWidth="1.5"
-              viewBox="0 0 24 24"
-              fill="none"
-              color="currentColor"
-            >
-              <path
-                d="M10.25 4.75l-3.5 3.5 3.5 3.5"
-                stroke="currentColor"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              ></path>
-              <path
-                d="M6.75 8.25h6a4 4 0 014 4v7"
-                stroke="currentColor"
-                stroke-width="1.5"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              ></path>
-            </svg>
-            Blog{" "}
+            <ArrowLeft size={12} /> Blog{" "}
           </Link>
 
-          <div className="sm:flex hidden flex-col gap-3 text-gray-11 text-xs mt-16">
+          <div className="xl:flex hidden flex-col gap-3 text-gray-11 text-xs mt-16">
             {titles.map((title) => (
-              <a href={`#${title}`} key={title}>
+              <a className="p-1 -m-1 rounded-lg" href={`#${title}`} key={title}>
                 {title}
               </a>
             ))}
           </div>
         </div>
-        <div className="container max-w-screen-sm mt-10 px-6 pb-12">
-          <h1 className=" text-xl font-semibold">{post.title}</h1>
-          <span className="text-sm text-gray-10 ">
-            {new Date(post.publishedAt as string).toLocaleDateString("en-US", {
-              month: "long",
-              day: "numeric",
-              year: "numeric",
-            })}
-          </span>
+        <div className="container max-w-screen-sm px-6 mt-9 pb-12">
+          <div className="flex items-center justify-between">
+            <div>
+              <h1 className=" text-xl font-semibold">{post.title}</h1>
+              <span className="text-sm text-gray-10 ">
+                {new Date(post.publishedAt as string).toLocaleDateString(
+                  "en-US",
+                  {
+                    month: "long",
+                    day: "numeric",
+                    year: "numeric",
+                  }
+                )}
+              </span>
+            </div>
+            <ClipboardButton />
+          </div>
 
           <RichText
-            // className="lg:grid lg:grid-cols-subgrid col-start-1 col-span-3 grid-rows-[1fr]"
-            className="w-full mt-12"
+            className="w-full mt-10 "
             content={post.content}
             enableGutter={false}
           />

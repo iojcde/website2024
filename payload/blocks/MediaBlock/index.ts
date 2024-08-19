@@ -13,8 +13,8 @@ export const MediaBlock: Block = {
           value: "default",
         },
         {
-          label: "Fullscreen",
-          value: "fullscreen",
+          label: "Wide",
+          value: "wide",
         },
       ],
     },

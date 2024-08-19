@@ -19,8 +19,6 @@ type Props = MediaBlockProps & {
 export const MediaBlock: React.FC<Props> = (props) => {
   const {
     captionClassName,
-    className,
-    enableGutter = true,
     imgClassName,
     media,
     position = "default",
@@ -31,40 +29,26 @@ export const MediaBlock: React.FC<Props> = (props) => {
   if (media && typeof media === "object") caption = media.caption;
 
   return (
-    <div
-      className={cn(
-        "",
-        {
-          container: position === "default" && enableGutter,
-        },
-        className
-      )}
-    >
-      {position === "fullscreen" && (
-        <div className="relative">
-          <Media resource={media} src={staticImage} />
-        </div>
+    <>
+      {position === "wide" && (
+        <Media
+          className="lg:w-screen lg:max-w-[900px] max-h-[30rem] rounded-[12px] border lg:left-1/2 lg:right-1/2 relative lg:-translate-x-1/2"
+          resource={media}
+          src={staticImage}
+        />
       )}
       {position === "default" && (
         <Media
-          imgClassName={cn("rounded-[12px] border", imgClassName)}
+          className={cn("rounded-[12px] border", imgClassName)}
           resource={media}
           src={staticImage}
         />
       )}
       {caption && (
-        <div
-          className={cn(
-            "mt-6",
-            {
-              container: position === "fullscreen",
-            },
-            captionClassName
-          )}
-        >
+        <div className={cn(captionClassName, "italic -mt-4 font-medium")}>
           <RichText content={caption} enableGutter={false} />
         </div>
-      )}
-    </div>
+      )}{" "}
+    </>
   );
 };

@@ -13,7 +13,7 @@ const NotesPage = async () => {
 
   return (
     <div className=" pt-24 container max-w-screen-sm px-6">
-      <div className=" text-2xl font-semibold">Blog</div>
+      <div className=" text-xl font-semibold">Blog</div>
 
       <div className=" flex flex-col gap-6   mt-12">
         {data.docs.map((doc) => {
@@ -31,7 +31,7 @@ const NotesPage = async () => {
               key={doc.id}
               className="sm:flex gap-4 no-underline outline-none focus:underline justify-between"
             >
-              <div className="font-semibold text-lg">{doc.title}</div>
+              <div className="font-semibold">{doc.title}</div>
               <span className="text-right text-sm text-gray-11 whitespace-nowrap">
                 {publishedAt}
               </span>

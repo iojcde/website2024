@@ -212,7 +212,7 @@ export interface BannerBlock {
  * via the `definition` "MediaBlock".
  */
 export interface MediaBlock {
-  position?: ('default' | 'fullscreen') | null;
+  position?: ('default' | 'wide') | null;
   media: string | Media;
   id?: string | null;
   blockName?: string | null;

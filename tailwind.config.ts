@@ -11,6 +11,7 @@ const config: Config = {
     extend: {
       screens: {
         sm: "720px",
+        md: "980px",
         xl: "1200px",
       },
       container: {

@@ -18,6 +18,8 @@ import {
   BoldFeature,
   ItalicFeature,
   LinkFeature,
+  UnorderedListFeature,
+  OrderedListFeature,
 } from "@payloadcms/richtext-lexical";
 
 import { GenerateTitle, GenerateURL } from "@payloadcms/plugin-seo/types";
@@ -65,6 +67,8 @@ export default buildConfig({
         UnderlineFeature(),
         BoldFeature(),
         ItalicFeature(),
+        UnorderedListFeature(),
+        OrderedListFeature(),
         LinkFeature({
           enabledCollections: ["posts"],
           fields: ({ defaultFields }) => {

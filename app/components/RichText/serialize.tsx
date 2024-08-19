@@ -110,7 +110,6 @@ export function serializeLexical({ nodes }: Props): JSX.Element {
             case "mediaBlock":
               return (
                 <MediaBlock
-                  className="col-start-1 col-span-3"
                   imgClassName="m-0"
                   key={index}
                   {...block}
@@ -119,38 +118,25 @@ export function serializeLexical({ nodes }: Props): JSX.Element {
                 />
               );
             case "banner":
-              return (
-                <BannerBlock
-                  className="col-start-2 mb-4"
-                  key={index}
-                  {...block}
-                />
-              );
+              return <BannerBlock className="mb-4" key={index} {...block} />;
             case "code":
-              return (
-                <CodeBlock className="col-start-2" key={index} {...block} />
-              );
+              return <CodeBlock key={index} {...block} />;
             default:
               return null;
           }
         } else {
           switch (node.type) {
             case "linebreak": {
-              return <br className="col-start-2" key={index} />;
+              return <br key={index} />;
             }
             case "paragraph": {
-              return (
-                <p className="col-start-2" key={index}>
-                  {serializedChildren}
-                </p>
-              );
+              return <p key={index}>{serializedChildren}</p>;
             }
             case "heading": {
               const Tag = node?.tag;
 
               return (
                 <Tag
-                  className="col-start-2"
                   id={
                     (serializedChildren as JSX.Element).props.children[0].props
                       .children
@@ -164,7 +150,7 @@ export function serializeLexical({ nodes }: Props): JSX.Element {
             case "list": {
               const Tag = node?.tag;
               return (
-                <Tag className="list col-start-2" key={index}>
+                <Tag className="list" key={index}>
                   {serializedChildren}
                 </Tag>
               );
@@ -193,11 +179,7 @@ export function serializeLexical({ nodes }: Props): JSX.Element {
               }
             }
             case "quote": {
-              return (
-                <blockquote className="col-start-2" key={index}>
-                  {serializedChildren}
-                </blockquote>
-              );
+              return <blockquote key={index}>{serializedChildren}</blockquote>;
             }
             case "link": {
               const fields = node.fields;
