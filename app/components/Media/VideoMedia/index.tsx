@@ -6,7 +6,7 @@ import React, { useEffect, useRef } from "react";
 import type { Props as MediaProps } from "../types";
 
 export const VideoMedia: React.FC<MediaProps> = (props) => {
-  const { onClick, resource, videoClassName } = props;
+  const { onClick, resource, className } = props;
 
   const videoRef = useRef<HTMLVideoElement>(null);
   // const [showFallback] = useState<boolean>()
@@ -27,7 +27,7 @@ export const VideoMedia: React.FC<MediaProps> = (props) => {
     return (
       <video
         autoPlay
-        className={cn(videoClassName)}
+        className={cn(className)}
         controls={false}
         loop
         muted

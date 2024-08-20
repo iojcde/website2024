@@ -235,16 +235,35 @@ body {
   }
 }
 
-
-
  
-/* h1, h2,h3 {
-  @apply tracking-[-0.01em]
-} */
-
  
 a:focus-visible {
   outline: 0px; 
   text-decoration: none;
   @apply rounded ring-[#ffc53d] shadow-inner;
+}
+ 
+.splitter {
+  width: 1px;
+  height: 80%;
+  align-self: center;
+  margin: 0px 5px;
+  @apply bg-gray-6;
+}
+
+#dock {
+  @apply z-50 border bg-white  rounded-full fixed bottom-8 left-1/2 -translate-x-1/2 text-gray-11;
+}
+.item {  
+
+  @apply  rounded-full flex items-center justify-center  bg-gray-3;
+}
+
+
+#dock {
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+#dock:defined {
+  opacity: 1;
 }
