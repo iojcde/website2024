@@ -1,16 +1,12 @@
 import { openai } from "@ai-sdk/openai";
 import { generateText, streamText } from "ai";
 
-export const translateit = async ({
-  input,
-  lang,
-}: {
-  input: string;
-  lang: "korean" | "english";
-}) => {
+export const POST = async (req: Request) => {
   if (process.env.OPENAI_API_KEY === undefined) {
     throw new Error("OPENAI_API_KEY is not set");
   }
+
+  const { input, lang } = await req.json();
 
   const result = await streamText({
     model: openai("gpt-4o-mini"),

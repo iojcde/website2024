@@ -104,7 +104,7 @@ const Brainstorm = () => {
 
           <ul className="text-xs flex gap-4 overflow-x-scroll max-w-screen-xl border rounded-lg p-4 w-full">
             {improvedObject?.improvements?.map(
-              ({ original, improvement, description, i }) => (
+              ({ original, improvement, description, i }: any) => (
                 <li key={i} className="min-w-48">
                   <p className="mb-2 font-semibold">{description}</p>
                   <Markdown className="  prose-sm text-xs">
@@ -136,15 +136,17 @@ const Brainstorm = () => {
 export default Brainstorm;
 
 const Translator = () => {
-  const [output, setOutput] = useState("");
+  const { object, submit: translateit } = useObject({
+    api: "/api/write/translate",
+    schema: translateSchema,
+  });
 
   const translate = useCallback(
     debounce(async (input, lang) => {
-      const text = await translateit({
+      translateit({
         input,
         lang,
       });
-      setOutput(text);
     }, 1000),
     []
   );
@@ -159,7 +161,7 @@ const Translator = () => {
       />
       <div className="w-full">
         <h2 className="font-bold">Output</h2>
-        <div>{output}</div>
+        <div>{object?.output}</div>
       </div>
     </div>
   );
@@ -171,6 +173,7 @@ import { Button } from "@/app/components/ui/button";
 import { readStreamableValue } from "ai/rsc";
 import { improveSchema } from "@/app/api/write/improve/schema";
 import { suggestSchema } from "@/app/api/write/suggest/schema";
+import { translateSchema } from "@/app/api/write/translate/schema";
 
 function Chat() {
   const { messages, input, handleInputChange, handleSubmit } = useChat({
