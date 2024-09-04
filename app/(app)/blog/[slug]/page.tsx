@@ -52,7 +52,7 @@ export default async function Post({ params: { slug = "" } }) {
       <div className="fixed inset-x-0 h-20 bottom-0 z-10 bg-gradient-to-t from-gray-1 to-transparent pointer-events-none backdrop-blur-[2px] [mask-image:linear-gradient(to_top,var(--gray-12)_25%,transparent)]"></div>
 
       <div className="container relative xl:max-w-screen-xl">
-        <div className="md:fixed  px-6 xl:px-0 pt-1">
+        <div className="md:fixed  px-6 xl:px-0 ">
           <Link
             href="/blog"
             className="hover:text-gray-12 rounded-xl p-3 max-w-fit -m-3 transition flex text-gray-11 items-center gap-1  text-sm no-underline  mb-4"
@@ -61,7 +61,7 @@ export default async function Post({ params: { slug = "" } }) {
             <ArrowLeft size={12} /> Blog{" "}
           </Link>
 
-          <div className="xl:flex hidden flex-col gap-3 text-gray-11 text-xs mt-16">
+          <div className="xl:flex hidden flex-col gap-3 text-gray-10 text-[13px] mt-16">
             {titles.map((title) => (
               <a className="p-1 -m-1 rounded-lg" href={`#${title}`} key={title}>
                 {title}

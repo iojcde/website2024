@@ -233,14 +233,16 @@ body {
   body {
     @apply bg-background text-foreground;
   }
-}
+} 
 
- 
- 
 a:focus-visible {
   outline: 0px; 
   text-decoration: none;
-  @apply rounded ring-[#ffc53d] shadow-inner;
+  @apply ring ring-[#ffc53d] shadow-inner;
+}
+
+a:not(.rounded-full):not(.dock-item):focus-visible {
+  @apply rounded;
 }
  
 .splitter {
@@ -251,19 +253,63 @@ a:focus-visible {
   @apply bg-gray-6;
 }
 
+
+nav {
+  @apply fixed bottom-6 overflow-hidden pt-24 px-8  left-1/2  z-50 -translate-x-1/2;
+}
+
 #dock {
-  @apply z-50 border bg-white  rounded-full fixed bottom-8 left-1/2 -translate-x-1/2 text-gray-11;
+  @apply block translate-y-4  w-full h-fit border  text-gray-11   bg-white rounded-full;
 }
-.item {  
-
-  @apply  rounded-full flex items-center justify-center  bg-gray-3;
+.dock-item {  
+  @apply  rounded-full  flex items-center justify-center  bg-gray-3;
 }
-
 
 #dock {
   opacity: 0;
-  transition: opacity 0.3s;
+  transition: opacity 0.3s, transform 0.3s; 
 }
-#dock:defined {
+
+ #dock:defined {
   opacity: 1;
+  @apply translate-y-0;
+}
+
+a.down {
+  animation: down 0.3s ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+a.up {
+  animation: updown 0.4s;
+}
+ 
+ 
+
+@keyframes down { 
+  0%{
+    transform: translateY(0);
+  }
+ 
+  100%{
+    transform: translateY(3px);
+  }
+}
+
+@keyframes updown { 
+  0%{
+    transform: translateY(3px);
+  }
+ 
+  50%{
+    transform: translateY(-15px);
+  }
+
+  80%{
+    transform: translateY(3px);
+  }
+
+  100%{
+    transform: translateY(0);
+  }
 }

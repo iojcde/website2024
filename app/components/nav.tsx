@@ -1,51 +1,31 @@
 // @ts-nocheck
+"use client";
+
 import { FlaskConical, Home, ScrollText } from "lucide-react";
 import Link from "next/link";
+import DockItem from "./dock/item";
+
 const Nav = () => {
   return (
-    <dock-wrapper id="dock" gap="8">
-      <dock-item>
-        <Link href="/" class="item">
+    <nav>
+      <dock-wrapper id="dock" gap="8">
+        <DockItem href="/">
           <Home size={16} />
-        </Link>
-      </dock-item>
-      <div class="splitter"></div>
-      <dock-item>
-        <Link href="/labs" class="item">
+        </DockItem>
+        <div className="splitter"></div>
+        <DockItem href="/labs">
           <FlaskConical size={16} />
-        </Link>
-      </dock-item>
-      <dock-item>
-        <Link href="/blog" class="item">
+        </DockItem>
+        <DockItem href="/blog">
           <ScrollText size={16} />
-        </Link>
-      </dock-item>
-      <dock-item>
-        <Link href="/" class="item">
-          4
-        </Link>
-      </dock-item>
-      <dock-item>
-        <Link href="/" class="item">
-          5
-        </Link>
-      </dock-item>
-      <dock-item>
-        <Link href="/" class="item">
-          6
-        </Link>
-      </dock-item>
-      <dock-item>
-        <Link href="/" class="item">
-          7
-        </Link>
-      </dock-item>
-      <dock-item>
-        <Link href="/" class="item">
-          8
-        </Link>
-      </dock-item>
-    </dock-wrapper>
+        </DockItem>
+        <DockItem href="/">4</DockItem>
+        <DockItem href="/">5</DockItem>
+        <DockItem href="/">6</DockItem>
+        <DockItem href="/">7</DockItem>
+        <DockItem href="/">8</DockItem>{" "}
+      </dock-wrapper>
+    </nav>
   );
 };
 

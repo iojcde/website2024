@@ -45,7 +45,13 @@ export const MediaBlock: React.FC<Props> = (props) => {
         />
       )}
       {caption && (
-        <div className={cn(captionClassName, "italic -mt-4 font-medium")}>
+        <div
+          className={cn(
+            captionClassName,
+            "italic text-center font-medium",
+            position == "wide" && "-mt-2"
+          )}
+        >
           <RichText content={caption} enableGutter={false} />
         </div>
       )}{" "}

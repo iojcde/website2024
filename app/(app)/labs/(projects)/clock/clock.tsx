@@ -136,7 +136,7 @@ export const UltraSmoothRoundedLongClock: React.FC = () => {
     <div
       className={cn(
         `absolute inset-0 z-0 transition`,
-        "scale-50 lg:scale-[0.6]  darfk"
+        "scale-50 lg:scale-[0.6] clock  darfk"
       )}
       style={{
         display: "flex",
