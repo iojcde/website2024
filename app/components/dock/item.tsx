@@ -21,7 +21,7 @@ const DockItem = ({
   return (
     // @ts-ignore
     <dock-item
-      onMouseUp={(e) => {
+      onMouseUp={(e: any) => {
         e.preventDefault();
         // change className
 
@@ -32,7 +32,7 @@ const DockItem = ({
           (e.target as HTMLElement).closest("a")?.classList.remove("up");
         }, 300);
       }}
-      onMouseDown={(e) => {
+      onMouseDown={(e: any) => {
         e.preventDefault();
         // change className
         (e.target as HTMLElement).closest("a")?.classList.add("down");
