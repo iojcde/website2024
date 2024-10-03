@@ -61,9 +61,13 @@ export default async function Post({ params: { slug = "" } }) {
             <ArrowLeft size={12} /> Blog{" "}
           </Link>
 
-          <div className="xl:flex hidden flex-col gap-3 text-gray-10 text-[13px] mt-16">
+          <div className="xl:flex hidden flex-col gap-3 text-gray-10 text-[12px] mt-16">
             {titles.map((title) => (
-              <a className="p-1 -m-1 rounded-lg" href={`#${title}`} key={title}>
+              <a
+                className="p-1 -m-1 rounded-lg"
+                href={`#${title.replace(/\s+/g, "-")}`}
+                key={title}
+              >
                 {title}
               </a>
             ))}

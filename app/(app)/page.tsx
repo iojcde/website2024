@@ -10,24 +10,21 @@ import Credits from "./credits";
 export default function Home() {
   return (
     <div>
-      <div className="p-8  mx-auto sticky top-0 z-0  h-dvh overflow-hidden w-full">
+      <div className="p-8  mx-auto sticky top-0   h-dvh overflow-hidden w-full">
         <CurrentTime />
         {/* <UltraSmoothRoundedLongClock /> */}
         <ScreenSize />
         <Credits />
 
-        <div className="max-w-6xl m-auto mt-16 relative z-20">
+        <div className="max-w-6xl m-auto mt-16 relative z-30">
           {" "}
           <div className="text-right  ">
             <h1 className=" font-semibold text-2xl text-gray-12 font-dispxlay ">
               Jeeho Ahn
             </h1>
-            <p className="text-gray-10">
-              {/* Professional "works on my machine" investigator */}
-              Professional digital firefighter
-            </p>
+            <p className="text-gray-10 ">distributed systems enjoyer</p>
           </div>
-          <div className="space-y-4  -ml-2 sm:mt-0 mt-12  font-medium">
+          <div className="space-y-4 z-50 relative -ml-2 sm:mt-0 mt-12  font-medium">
             <Link
               className=" w-fit px-2  group block text-gray-12 "
               href="/labs"
@@ -65,9 +62,57 @@ export default function Home() {
             </Link>
           </div>
         </div>
+        <div className="absolute inset-0 sm:pt-0 pt-32 flex flex-col items-center z-0 justify-center"></div>
       </div>
-      <div className="bg-black h-[300vh] p-24  z-10 relative w-full text-white text-4xl font-bold">
-        <div>Hello.</div>
+      <div className="bg-black h-[300vh] p-24  selection:text-black  z-10 relative w-full text-white ">
+        <div className="text-4xl font-bold">
+          <div>Hello!</div>
+          <p className="mt-24">I&apos;m Jeeho Ahn.</p>
+          <p className="mt-8 text-3xl">
+            I&apos;m interested in distributed systems,
+            <br />
+            programming languages, and web development.
+          </p>
+        </div>
+
+        <p className="mt-24 font-normal max-w-prose  text-pretty">
+          I&apos;ve worked on various open source projects such as
+          {` `}
+          <a target="_blank" href="https://github.com/partykit/partykit">
+            PartyKit
+          </a>
+          ,{` `}
+          <a target="_blank" href="https://github.com/liveduo/destack">
+            {" "}
+            Destack
+          </a>
+          , and more.
+          <br /> I&apos;m familiar with TypeScript and Go, and am currently in
+          the process of learning Rust. Currently, I&apos;m currently a student
+          at Dankook University affiliated Software Highschool.
+          <br />
+          <br />
+          Recently, I&apos;ve been working on hobby projects such as
+          implementing the Raft consensus in Rust, and building a distributed
+          key-value store.
+        </p>
+
+        <p className="mt-12">
+          I also enjoy designing and building websites. This website was built
+          with Next.js and{" "}
+          <a target="_blank" href="https://payloadcms.com">
+            PayloadCMS
+          </a>
+          .
+        </p>
+
+        <p className="mt-24">
+          <a href="mailto:io@jcde.xyz" className="underline">
+            Contact me
+          </a>
+        </p>
+
+        <p className="mt-12">Jeeho Ahn</p>
       </div>
     </div>
   );

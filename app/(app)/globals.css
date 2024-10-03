@@ -20,7 +20,7 @@ p a{
   
 }
 html,body{
-  scroll-padding-top: 3rem;
+  scroll-padding-top: 1rem;
   scroll-behavior: smooth;
   
   height: 100%;
@@ -312,4 +312,12 @@ a.up {
   100%{
     transform: translateY(0);
   }
+}
+
+
+:root {
+ --really-orange: color(display-p3 1 0.5 0.005);
+}
+:root { 
+  --really-orange: #ff7600; 
 }

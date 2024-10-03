@@ -138,8 +138,12 @@ export function serializeLexical({ nodes }: Props): JSX.Element {
               return (
                 <Tag
                   id={
-                    (serializedChildren as JSX.Element).props.children[0].props
-                      .children
+                    (
+                      serializedChildren as JSX.Element
+                    ).props.children[0].props.children.replace(
+                      /\s+/g,
+                      "-"
+                    ) as string
                   }
                   key={index}
                 >
