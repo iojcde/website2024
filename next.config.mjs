@@ -20,10 +20,7 @@ const config = {
         pathname: "/u/*",
       },
     ],
-  },
-  experimental: {
-    reactCompiler: false,
-  },
+  }, 
 };
 
 export default withPlaiceholder(withPayload(config));
