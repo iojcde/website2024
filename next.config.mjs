@@ -13,14 +13,7 @@ const NEXT_PUBLIC_SERVER_URL =
 const config = {
   images: {
     remotePatterns: [
-      ...[NEXT_PUBLIC_SERVER_URL].map((item) => {
-        const url = new URL(item);
-
-        return {
-          hostname: url.hostname,
-          protocol: url.protocol.replace(":", "")  ,
-        };
-      }),
+      
       {
         protocol: "https"  ,
         hostname: "cdn.jcde.xyz",
