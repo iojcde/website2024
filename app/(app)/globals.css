@@ -11,7 +11,7 @@
 
 p a{
   text-decoration-thickness: 1px;
-  @apply underline  underline-offset-2  decoration-gray-10   ;
+  @apply underline  underline-offset-2  decoration-gray-11 decoration-dotted text-gray-11   ;
 
 }
 :root{
@@ -30,7 +30,7 @@ html,body{
 
 body {
   
-  @apply bg-gray-1 text-gray-12 selection:bg-[#fcf6a7] selection:opacity-50 ;
+  @apply bg-gray-1 text-gray-12 selection:text-gray-1 selection:bg-[#fcf6a7] selection:opacity-50 ;
 }
 
 @layer utilities {
@@ -259,10 +259,14 @@ nav {
 }
 
 #dock {
-  @apply block translate-y-4  w-full h-fit border  text-gray-11   bg-white rounded-full;
+  @apply block translate-y-4  w-full h-fit border  text-gray-11   bg-gray-1 rounded-full;
 }
 .dock-item {  
   @apply  rounded-full  flex items-center justify-center  bg-gray-3;
+}
+
+.dock-item.active{
+  @apply bg-gray-4 border border-gray-8;
 }
 
 #dock {

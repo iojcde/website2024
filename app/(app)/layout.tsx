@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import { JetBrains_Mono } from "next/font/google";
+import { JetBrains_Mono, Newsreader } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import Nav from "../components/nav";
@@ -8,14 +8,6 @@ import Script from "next/script";
 
 const diatype = localFont({
   src: [
-    // { path: "../../fonts/InterVariable.woff2" },
-    // {
-    //   path: "../../fonts/InterVariable-Italic.woff2",
-    //   style: "italic",
-    // },
-    // {
-    //   path: "../../fonts/PretendardVariable.woff2",
-    // },
     {
       path: "../../fonts/ABCDiatypeVariableEdu-Regular.woff2",
     },
@@ -33,6 +25,11 @@ export const metadata: Metadata = {
   description: "",
 };
 
+const newsreader = Newsreader({
+  subsets: ["latin"],
+  variable: "--font-newsreader",
+  display: "swap",
+});
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -41,7 +38,12 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={cn(diatype.variable, jbmono.variable, " antialiased ")}
+      className={cn(
+        diatype.variable,
+        jbmono.variable,
+        newsreader.variable,
+        " antialiased dark"
+      )}
     >
       <head>
         <Script
@@ -51,7 +53,7 @@ export default function RootLayout({
       </head>
       <body>
         {children}
-        {/* <Nav /> */}
+        <Nav />
       </body>
     </html>
   );

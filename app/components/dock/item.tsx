@@ -1,4 +1,5 @@
 "use client";
+import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -38,13 +39,16 @@ const DockItem = ({
         (e.target as HTMLElement).closest("a")?.classList.add("down");
       }}
     >
-      <Link href={href} className="dock-item transition target:-translate-y-2">
+      <Link
+        href={href}
+        className={cn(
+          "dock-item transition target:-translate-y-2",
+          active && "active"
+        )}
+      >
         {children}
       </Link>
 
-      {active && (
-        <div className="absolute scale-[calc(1/attr(scale number))] -bottom-1.5 rounded-full w-1 h-1 bg-gray-4"></div>
-      )}
       {/* @ts-ignore */}
     </dock-item>
   );

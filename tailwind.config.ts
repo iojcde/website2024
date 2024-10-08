@@ -25,6 +25,7 @@ const config: Config = {
       fontFamily: {
         sans: ["var(--font-diatype)"],
         mono: ["var(--font-jbmono)"],
+        serif: ["var(--font-newsreader)"],
       },
 
       colors: {
