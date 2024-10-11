@@ -3,8 +3,11 @@ import localFont from "next/font/local";
 import { JetBrains_Mono, Newsreader } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
-import Nav from "../components/nav";
 import Script from "next/script";
+import { TooltipProvider } from "@/components/ui/tooltip";
+
+import dynamic from "next/dynamic";
+import Nav from "../components/nav";
 
 const diatype = localFont({
   src: [
@@ -47,13 +50,15 @@ export default function RootLayout({
     >
       <head>
         <Script
-          strategy="beforeInteractive"
+          strategy="afterInteractive"
           src="https://unpkg.com/dockbar@latest/dockbar.iife.js"
         />
       </head>
       <body>
-        {children}
-        <Nav />
+        <TooltipProvider>
+          {children}
+          <Nav />
+        </TooltipProvider>
       </body>
     </html>
   );

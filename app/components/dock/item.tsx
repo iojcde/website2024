@@ -21,30 +21,10 @@ const DockItem = ({
 
   return (
     // @ts-ignore
-    <dock-item
-      onMouseUp={(e: any) => {
-        e.preventDefault();
-        // change className
-
-        (e.target as HTMLElement).closest("a")?.classList.remove("down");
-        (e.target as HTMLElement).closest("a")?.classList.add("up");
-
-        setTimeout(() => {
-          (e.target as HTMLElement).closest("a")?.classList.remove("up");
-        }, 300);
-      }}
-      onMouseDown={(e: any) => {
-        e.preventDefault();
-        // change className
-        (e.target as HTMLElement).closest("a")?.classList.add("down");
-      }}
-    >
+    <dock-item suppressHydrationWarning>
       <Link
         href={href}
-        className={cn(
-          "dock-item transition target:-translate-y-2",
-          active && "active"
-        )}
+        className={cn("dock-item transition ", active && "active")}
       >
         {children}
       </Link>

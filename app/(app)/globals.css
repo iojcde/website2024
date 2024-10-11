@@ -261,6 +261,8 @@ nav {
 #dock {
   @apply block translate-y-4  w-full h-fit border  text-gray-11   bg-gray-1 rounded-full;
 }
+
+
 .dock-item {  
   @apply  rounded-full  flex items-center justify-center  bg-gray-3;
 }
@@ -268,6 +270,7 @@ nav {
 .dock-item.active{
   @apply bg-gray-4 border border-gray-8;
 }
+
 
 #dock {
   opacity: 0;
@@ -289,36 +292,22 @@ a.up {
 }
  
  
+ dock-mobile {
+  opacity:0;
+  transition: opacity 0.3s, transform 0.3s; 
+  @apply flex  border  translate-y-4 text-gray-11   bg-gray-1 rounded-full gap-[8px] p-[8px] list-none box-border items-center h-[56px];
+ }
 
-@keyframes down { 
-  0%{
-    transform: translateY(0);
-  }
- 
-  100%{
-    transform: translateY(3px);
-  }
+ dock-mobile.visible {
+  opacity:1;
+  @apply translate-y-0;
+ }
+
+
+.dock-item {
+  @apply  rounded-full  flex items-center justify-center  bg-gray-3;
 }
-
-@keyframes updown { 
-  0%{
-    transform: translateY(3px);
-  }
  
-  50%{
-    transform: translateY(-15px);
-  }
-
-  80%{
-    transform: translateY(3px);
-  }
-
-  100%{
-    transform: translateY(0);
-  }
-}
-
-
 :root {
  --really-orange: color(display-p3 1 0.5 0.005);
 }

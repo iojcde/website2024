@@ -44,19 +44,17 @@ export default function Home() {
         <br />
         <br />
         Hi! I&apos;m{` `}
-        <TooltipProvider>
-          <Tooltip>
-            <TooltipTrigger className="underline decoration-dotted decoration-gray-10  underline-offset-2">
-              Jeeho
-            </TooltipTrigger>
-            <TooltipContent>
-              <p>
-                Pronounced as
-                <span className="font-semibold"> Jee - Ho</span>
-              </p>
-            </TooltipContent>
-          </Tooltip>
-        </TooltipProvider>
+        <Tooltip>
+          <TooltipTrigger className="underline decoration-dotted decoration-gray-10  underline-offset-2">
+            Jeeho
+          </TooltipTrigger>
+          <TooltipContent>
+            <p className="text-xs">
+              Pronounced as
+              <span className="font-semibold"> Jee - Ho</span>
+            </p>
+          </TooltipContent>
+        </Tooltip>
         , a designer and software engineer based in South Korea.
         <br />
         <br />

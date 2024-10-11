@@ -31,7 +31,7 @@ const ScreenSize = () => {
   return (
     <div
       className={cn(
-        `p-6 absolute transition z-50 bottom-0 left-0 text-gray-9 font-mono text-xs`,
+        `hidden md:block p-6 absolute transition z-50 bottom-0 left-0 text-gray-9 font-mono text-xs`,
         !size.width && "opacity-0"
       )}
     >
