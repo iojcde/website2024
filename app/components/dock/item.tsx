@@ -21,16 +21,15 @@ const DockItem = ({
 
   return (
     // @ts-ignore
-    <dock-item suppressHydrationWarning>
+    (<dock-item suppressHydrationWarning>
       <Link
         href={href}
         className={cn("dock-item transition ", active && "active")}
       >
         {children}
       </Link>
-
       {/* @ts-ignore */}
-    </dock-item>
+    </dock-item>)
   );
 };
 

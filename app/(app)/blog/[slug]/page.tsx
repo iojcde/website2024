@@ -29,7 +29,13 @@ export async function generateStaticParams() {
   return posts.docs?.map(({ slug }) => slug);
 }
 
-export default async function Post({ params: { slug = "" } }) {
+export default async function Post(props) {
+  const params = await props.params;
+
+  const {
+    slug = ""
+  } = params;
+
   const url = "/posts/" + slug;
   const post = await queryPostBySlug({ slug });
 
@@ -47,10 +53,9 @@ export default async function Post({ params: { slug = "" } }) {
     .map((n) => (n.children as any)[0].text);
 
   return (
-    <article className="sm:pt-20 pt-8 pb-16">
+    (<article className="sm:pt-20 pt-8 pb-16">
       {/* <div className="fixed inset-x-0 h-20 top-0 z-10 bg-gradient-to-b from-gray-1 to-transparent pointer-events-none backdrop-blur-[1px] [mask-image:linear-gradient(to_bottom,var(--gray-12)_25%,transparent)]"></div> */}
       <div className="fixed inset-x-0 h-20 bottom-0 z-10 bg-gradient-to-t from-gray-1 to-transparent pointer-events-none backdrop-blur-[2px] [mask-image:linear-gradient(to_top,var(--gray-12)_25%,transparent)]"></div>
-
       <div className="container relative xl:max-w-screen-xl">
         <div className="md:fixed  px-6 xl:px-0 ">
           <Link
@@ -98,27 +103,32 @@ export default async function Post({ params: { slug = "" } }) {
           />
         </div>
       </div>
-
       <RelatedPosts
         className="mt-12"
         docs={post.relatedPosts?.filter((post) => typeof post === "object")}
       />
-    </article>
+    </article>)
   );
 }
 
-export async function generateMetadata({
-  params: { slug },
-}: {
-  params: { slug: any };
-}): Promise<Metadata> {
+export async function generateMetadata(
+  props: {
+    params: Promise<{ slug: any }>;
+  }
+): Promise<Metadata> {
+  const params = await props.params;
+
+  const {
+    slug
+  } = params;
+
   const post = await queryPostBySlug({ slug });
 
   return generateMeta({ doc: post });
 }
 
 const queryPostBySlug = cache(async ({ slug }: { slug: string }) => {
-  const { isEnabled: draft } = draftMode();
+  const { isEnabled: draft } = await draftMode();
 
   const payload = await getPayloadHMR({ config: configPromise });
 

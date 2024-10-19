@@ -40,7 +40,7 @@ export const Card: React.FC<{
       className="w-full break-inside-avoid-column h-auto group rounded-2xl outline-none block mb-2 focus-visible:ring-1 ring-neutral-950 dark:ring-neutral-50"
       href={href}
     >
-      <div className="w-full h-auto p-1 bg-white rounded-[12px] border ">
+      <div className="w-full h-auto p-1 bg-gray-2 rounded-[12px] border ">
         <div className="w-full h-auto relative overflow-hidden rounded-[8px]">
           {image && (
             <Image

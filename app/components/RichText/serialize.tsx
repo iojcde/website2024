@@ -33,7 +33,7 @@ type Props = {
 
 export function serializeLexical({ nodes }: Props): JSX.Element {
   return (
-    <Fragment>
+    (<Fragment>
       {nodes?.map((node, index): JSX.Element | null => {
         if (node == null) {
           return null;
@@ -136,19 +136,19 @@ export function serializeLexical({ nodes }: Props): JSX.Element {
               const Tag = node?.tag;
 
               return (
-                <Tag
-                  id={
-                    (
-                      serializedChildren as JSX.Element
-                    ).props.children[0].props.children.replace(
-                      /\s+/g,
-                      "-"
-                    ) as string
-                  }
-                  key={index}
-                >
+                (<Tag
+                    id={
+                      (
+                        serializedChildren as JSX.Element
+                      ).props.children[0].props.children.replace(
+                        /\s+/g,
+                        "-"
+                      ) as string
+                    }
+                    key={index}
+                  >
                   {serializedChildren}
-                </Tag>
+                </Tag>)
               );
             }
             case "list": {
@@ -206,6 +206,6 @@ export function serializeLexical({ nodes }: Props): JSX.Element {
           }
         }
       })}
-    </Fragment>
+    </Fragment>)
   );
 }
