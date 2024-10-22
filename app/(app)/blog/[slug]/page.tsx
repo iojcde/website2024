@@ -1,6 +1,4 @@
-import type { Metadata } from "next";
-
-import { RelatedPosts } from "@/app/blocks/RelatedPosts";
+import type { Metadata } from "next"; 
 import configPromise from "@payload-config";
 import { getPayloadHMR } from "@payloadcms/next/utilities";
 import { draftMode, headers } from "next/headers";
@@ -103,10 +101,7 @@ export default async function Post(props:any) {
           />
         </div>
       </div>
-      <RelatedPosts
-        className="mt-12"
-        docs={post.relatedPosts?.filter((post) => typeof post === "object")}
-      />
+       
     </article>)
   );
 }

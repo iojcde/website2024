@@ -105,7 +105,7 @@ export const PlannerComponent = () => {
               const output = await plannit({ constraints, date, rest });
               setLoading(false);
 
-              setSchedules(output.schedules);
+              setSchedules((output as any ).schedules);
             }}
             className="ml-2"
             disabled={loading}

@@ -21,7 +21,7 @@ const getImage = async (src: string) => {
   };
 };
 
-export const Card: React.FC<{
+export const Card = async ({ title, image, href, date, video, dark }:{
   title: string;
   image?: string;
   video?: string;
@@ -29,7 +29,7 @@ export const Card: React.FC<{
   date: string;
   className?: string;
   dark?: boolean;
-}> = async ({ title, image, href, date, video, dark }) => {
+}) => {
   const { base64, img } = image
     ? await getImage(image)
     : { base64: "", img: { src: "" } };
