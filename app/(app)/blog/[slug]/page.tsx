@@ -29,7 +29,7 @@ export async function generateStaticParams() {
   return posts.docs?.map(({ slug }) => slug);
 }
 
-export default async function Post(props) {
+export default async function Post(props:any) {
   const params = await props.params;
 
   const {
