@@ -1,8 +1,8 @@
 /* THIS FILE WAS GENERATED AUTOMATICALLY BY PAYLOAD. */
-/* DO NOT MODIFY IT BECAUSE IT COULD BE REWRITTEN AT ANY TIME. */
 import type { Metadata } from "next";
 
 import config from "@payload-config";
+/* DO NOT MODIFY IT BECAUSE IT COULD BE REWRITTEN AT ANY TIME. */
 import { generatePageMetadata, RootPage } from "@payloadcms/next/views";
 
 type Args = {
@@ -13,6 +13,7 @@ type Args = {
     [key: string]: string | string[];
   }>;
 };
+
 export const generateMetadata = ({
   params,
   searchParams,
@@ -20,6 +21,6 @@ export const generateMetadata = ({
   generatePageMetadata({ config, params, searchParams });
 
 const Page = ({ params, searchParams }: Args) =>
-  RootPage({ config, params, searchParams });
+  RootPage({ config, importMap: {}, params, searchParams });
 
 export default Page;
